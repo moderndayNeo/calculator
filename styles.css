@@ -1,7 +1,20 @@
 #container {
     width: 40%;
+    height: 500px;
+    border: thin black solid;
+    margin: 5% auto;
+    background-color: lightgray;
     display: grid;
-    grid-template-columns: 2fr repeat(5, 1fr);
-    grid-template-rows: 5% repeat(4,1fr) 5%;
+    grid-template-rows: 2fr repeat(5, 1fr);
+    grid-template-columns: 5% repeat(4,1fr) 5%;
     grid-gap: 1px;
 }
+
+#container div {
+    border: thin blue solid;
+}
+
+#screen {
+    grid-area: 1/1/2/5;
+}
+
