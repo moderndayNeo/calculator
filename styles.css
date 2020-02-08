@@ -1,23 +1,33 @@
+body {
+    background-color: darkslategray;
+}
+
 #container {
     width: 40%;
     border-radius: 5%;
     height: 500px;
     border: thin black solid;
     margin: 5% auto;
-    background-color: lightgray;
+    background-color: black;
     display: grid;
-    grid-template-rows: 2fr repeat(5, 1fr);
+    grid-template-rows: 1.5fr repeat(5, 1fr);
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
+    padding: 2%;
 }
 
 #container div {
-    border: thin black solid;
+    border: thin grey solid;
+    text-align: center;
+    vertical-align: middle;
+    color: grey;
+    font-size: 150%;
+    font-family: Arial;
+    padding-top: 5%;
 }
 
 #display {
     grid-area: 1/1/2/5;
-    background-color: green;
 }
 
 
