@@ -1,5 +1,6 @@
 #container {
     width: 40%;
+    border-radius: 5%;
     height: 500px;
     border: thin black solid;
     margin: 5% auto;
@@ -11,22 +12,20 @@
 }
 
 #container div {
-    border: thin blue solid;
+    border: thin black solid;
 }
 
 #display {
     grid-area: 1/1/2/5;
+    background-color: green;
 }
 
-#buttons {
-    grid-area: 2/1/7/5;
-}
 
 #clear {
     grid-area: 2/1/3/2;
 }
 
-.delete {
+#delete {
     grid-area: 2/2/3/3;
 }
 
@@ -38,4 +37,19 @@
     grid-area: 2/4/3/5;
 }
 
+#add {
+    grid-area: 3/4/4/4;
+}
+
+#subtract {
+    grid-area: 4/4/5/5;
+}
+
+#equals {
+    grid-area: 5/4/7/5;
+}
+
+#zero {
+    grid-area: 6/2/7/4; 
+}
 
