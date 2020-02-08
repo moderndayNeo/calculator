@@ -1,12 +1,12 @@
 body {
-    background-color: darkslategray;
+    background-color: #000010;
 }
 
 #container {
     width: 40%;
     border-radius: 5%;
     height: 500px;
-    border: thin black solid;
+    border: thin grey solid;
     margin: 5% auto;
     background-color: black;
     display: grid;
@@ -18,16 +18,18 @@ body {
 
 #container div {
     border: thin grey solid;
+    border-radius: 3%;
     text-align: center;
     vertical-align: middle;
     color: grey;
     font-size: 150%;
     font-family: Arial;
-    padding-top: 5%;
+    padding-top: 15%;
 }
 
 #display {
     grid-area: 1/1/2/5;
+    background-color: darkgreen;
 }
 
 
