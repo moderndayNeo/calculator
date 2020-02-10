@@ -19,88 +19,97 @@ const add = document.getElementById('add');
 const subtract = document.getElementById('subtract');
 const equals = document.getElementById('equals');
 
+const output = document.getElementById('output');
+
 // Screen output is a string, to be evaluated each time the user clicks 'equals'
 // On clicking each button, the relevant value 'e.g. 1' is added to the string
 
 one.addEventListener('click', function() {
-    document.getElementById('output').innerHTML += '1';
+   output.innerHTML += '1';
 });
 
 two.addEventListener('click', function() {
-    document.getElementById('output').innerHTML += '2';
+    output.innerHTML += '2';
 });
 
 three.addEventListener('click', function() {
-    document.getElementById('output').innerHTML += '3';
+    output.innerHTML += '3';
 });
 
 four.addEventListener('click', function() {
-    document.getElementById('output').innerHTML += '4';
+    output.innerHTML += '4';
 });
 
 five.addEventListener('click', function() {
-    document.getElementById('output').innerHTML += '5';
+    output.innerHTML += '5';
 });
 
 six.addEventListener('click', function() {
-    document.getElementById('output').innerHTML += '6';
+    output.innerHTML += '6';
 });
 
 seven.addEventListener('click', function() {
-    document.getElementById('output').innerHTML += '7';
+    output.innerHTML += '7';
 });
 
 eight.addEventListener('click', function() {
-    document.getElementById('output').innerHTML += '8';
+    output.innerHTML += '8';
 });
 
 nine.addEventListener('click', function() {
-    document.getElementById('output').innerHTML += '9';
+    output.innerHTML += '9';
 });
 
 zero.addEventListener('click', function() {
-    document.getElementById('output').innerHTML += '0';
+    output.innerHTML += '0';
 });
 
 decimal.addEventListener('click', function() {
-    document.getElementById('output').innerHTML += '.';
+    output.innerHTML += '.';
 });
 
 
-
 clear.addEventListener('click', function() {
-    document.getElementById('output').innerHTML += '';
+    output.innerHTML = '';
 });
 // Return to empty string
 
 /*  Remove LAST typed character
-delete.addEventListener('click', function() {
-    document.getElementById('output').innerHTML += '2';
+deleteBtn.addEventListener('click', function() {
+    output.innerHTML += '2';
 });
 */
 
 multiply.addEventListener('click', function() {
-    document.getElementById('output').innerHTML += ' * ';
+    output.innerHTML += ' * ';
 }); // Multiply
 
 divide.addEventListener('click', function() {
-    document.getElementById('output').innerHTML += ' / ';
+    output.innerHTML += ' / ';
 });
 
 add.addEventListener('click', function() {
-    document.getElementById('output').innerHTML += ' + ';
+    output.innerHTML += ' + ';
 });
 
 subtract.addEventListener('click', function() {
-    document.getElementById('output').innerHTML += ' - ';
+    output.innerHTML += ' - ';
+    console.log(output.innerHTML.length);
 });
 
 /*  Evaluate (eval) the string
 equals.addEventListener('click', function() {
-    document.getElementById('output').innerHTML += '2';
+    output.innerHTML += '2';
 });
 */
 
+// Output overflows if too many numbers are typed. Set a max length for the output string
+// If string.length is greater than 20, throw an error
 
 
+function limitOutputLength() {
+    if (output.innerHTML.length > 20) {
+        output.innerHTML = 'Error';
+    }
+}
 
