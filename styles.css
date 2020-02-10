@@ -8,12 +8,18 @@ body {
   /*  height: 500px; */
     border: thin grey solid;
     margin: 5% auto;
-    background-color: black;
+    background-color: #111111;
     display: grid;
     grid-template-rows: 1.5fr repeat(5, 1fr);
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
     padding: 2%;
+}
+
+@media only screen and (max-width: 600px) {
+    #container {
+        width: 100%;
+    }
 }
 
 #container div {
@@ -22,7 +28,7 @@ body {
     text-align: center;
     vertical-align: middle;
     color: grey; 
-    font-size: 150%;
+    font-size: 160%;
     font-family: Arial;
     padding-top: 15%;
 }
@@ -35,19 +41,27 @@ body {
     text-align: right;
 }
 
+.blackButtons {
+    background-color: black;
+}
+
 
 #clear {
     grid-area: 2/1/3/2;
+    background-color: orange;
 }
 
+/*
 #clear:hover {
     background-color: orange;
     transition: 1s;
     color: black;
 }
+*/
 
 #delete {
     grid-area: 2/2/3/3;
+    background-color: orange;
 }
 
 #multiply {
@@ -68,6 +82,7 @@ body {
 
 #equals {
     grid-area: 5/4/7/5;
+    background-color: #BE0F0F;
 }
 
 #zero {
