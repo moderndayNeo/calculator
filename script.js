@@ -4,11 +4,11 @@ const two = document.getElementById('two');
 
 
 oneBtn.addEventListener('click', function() {
-    document.getElementById('display').innerHTML = '1';
+    document.getElementById('output').innerHTML = '1';
 });
 
 two.addEventListener('click', function() {
-    document.getElementById('display').innerHTML = '2';
+    document.getElementById('output').innerHTML = '2';
 });
 
 
