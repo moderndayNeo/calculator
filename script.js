@@ -41,12 +41,29 @@ deleteBtn.addEventListener('click', function() {
    output.innerHTML = output.innerHTML.slice(0,-1);
 });
 
+const multiplyRegex = /x/g;
+const divideRegex = /÷/g;
+
 // Click the equals button, evaluate the string
 equals.addEventListener('click', function() {
+    output.innerHTML = output.innerHTML.replace(divideRegex, '/');
+    output.innerHTML = output.innerHTML.replace(multiplyRegex, '*');
     output.innerHTML = eval(output.innerHTML);
-    // Regex evaluation. In the string swap out instances of 
-    // ' x + for '*'
-    // and instances of 'divideSign' for /
+/*
+    return multiplyRegex.test(output.innerHTML) ? if true, do this : if false, do this;
+
+    output.innerHTML.replace(multiplyRegex, '*');
+    output.innerHTML.replace(divideRegex, '/');
+
+    If output.innerHTML contains multiply or divide, swap them out
+    find instanceOf 
+    or do a Regex.test for 'x', swap for '*'
+    str.match   REGEX.TEST  
+
+
+
+*/
+
 });
 
 
