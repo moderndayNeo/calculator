@@ -54,22 +54,25 @@ body {
     background-color: black;
 }
 
+.blackButtons:hover {
+    background-color: #1B0029;
+    color: white;
+    transition: 0.2s;
+}
+
 #clear {
     grid-area: 2/1/3/2;
     background-color: orange;
 }
 
-/*
-#clear:hover {
-    background-color: orange;
-    transition: 1s;
-    color: black;
-}
-*/
-
 #delete {
     grid-area: 2/2/3/3;
     background-color: orange;
+}
+
+#clear:hover, #delete:hover {
+    background-color: #FF5733;
+    transition: 1s;
 }
 
 #multiply {
