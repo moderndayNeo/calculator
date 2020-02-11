@@ -1,32 +1,27 @@
 const output = document.getElementById('output');
+/*
+const displayWidth = document.getElementById('display').scrollWidth;
+const outputWidth = output.scrollWidth;
+*/
+
 // Screen output is a string, to be evaluated each time the user clicks 'equals'
-// On clicking each button, the relevant value 'e.g. 1' is added to the string
+// On clicking a button, the relevant value 'e.g. 1' is added to the string
 // I have applied the class '.blackButtons' to buttons that ADD to the string. This is all buttons besides Clear, Delete and Equals.
 const blackButtons = document.getElementsByClassName('blackButtons');
 
 for (const value of blackButtons) {
     value.addEventListener('click', function() {
+        if (output.innerHTML.length < 20) {
+            //prevent display overflow
         output.innerHTML += this.innerHTML;
+        } else { return; }
     });
 }
 
 
 /*
-function maximumStringLength() {
-    
-}
-*/
-
-/*
-let maximumStringLength = output.innerHTML.maxLength;
-maximumStringLength = 2;
-console.log(maximumStringLength);
-let maxSize = output.innerHTML.size;
-maxSize = 2;
-console.log(maxSize);
-
-each button onclick, output += button's innerHTML
-
+addEventListener 
+If output.innerHTML.length > 20; return
 */
 
 
@@ -72,5 +67,4 @@ const multiply = document.getElementById('multiply');
 const divide = document.getElementById('divide');
 const add = document.getElementById('add');
 const subtract = document.getElementById('subtract');
-const equals = document.getElementById('equals');
 */
