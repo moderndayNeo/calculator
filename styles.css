@@ -22,7 +22,7 @@ body {
 
 @media only screen and (min-width: 600px) {
     #container {
-        width: 40%;
+        width: 30%;
     }
 }
 
@@ -63,16 +63,18 @@ body {
 
 #clear {
     grid-area: 2/1/3/2;
-    background-color: orange;
 }
 
 #delete {
     grid-area: 2/2/3/3;
-    background-color: orange;
 }
 
-#clear:hover, #delete:hover {
-    background-color: #FF5733;
+.orangeButtons {
+    background-color: #cc6b11;
+}
+
+.orangeButtons:hover {
+    background-color: #a0530c;
     transition: 1s;
 }
 
