@@ -42,12 +42,9 @@ const multiplyRegex = /x/g;
 
 // Click the equals button, evaluate the string
 equals.addEventListener('click', function() {
-   /* 
-    output.innerHTML = output.innerHTML.replace(divideRegex, '/');
-    console.log(output.innerHTML);
-*/
+
     output.innerHTML = output.innerHTML.replace(multiplyRegex, '*');
-    output.innerHTML = eval(output.innerHTML);
+    output.innerHTML = eval(output.innerHTML).toFixed(4); // display a fixed length number
 });
 
 
