@@ -4,6 +4,7 @@
 
 body {
     background-color: #000010;
+    font-family: 'Arial','Lucida Grande';
 }
 
 #container {
@@ -32,7 +33,6 @@ body {
     text-align: center;
     color: lightgrey; 
     font-size: 130%;
-    font-family: Arial;
 }
 
 #display {
