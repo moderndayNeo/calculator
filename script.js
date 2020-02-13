@@ -31,34 +31,37 @@ clear.addEventListener('click', function() {
 });
 
 // Click the DEL (Delete) button, remove the last typed character. Note: In the HTML document,
-// I have put a space either side of the operators. To factor for this the delete button will
-// remove the last 3 characters (space,operator,space) when an operator is used.
 deleteBtn.addEventListener('click', function() {
     if ((/\s$/g).test(output.innerHTML)) {
         output.innerHTML = output.innerHTML.slice(0,-2);
+    // I have put a space either side of the operators. To factor for this the delete button will
+    // remove the last 3 characters (space,operator,space) when an operator is used.
     } output.innerHTML = output.innerHTML.slice(0,-1);
 });
 
-
-const multiplyRegex = /x/g;
+// const multiplyRegex = /x/g;
+// output.innerHTML = output.innerHTML.replace(multiplyRegex, '*');
 //const divideRegex = /÷/g;
 //const divideRegex = /&divide;/g;
 
-
-function checkLastFourDigits(str) {
-       return eval(str) === parseInt(eval(str)) ? eval(str) : (eval(str)).toFixed(4);
-           // If the output is an integer, remove the unneccessary four zeros. Else,
-           // return the floating point number to 4 decimal places.
-   }
+function checkLastFourDigits(num) {
+    return num === parseInt(num) ? num : num.toFixed(4);
+}
 
 // Click the equals button, evaluate the string
 equals.addEventListener('click', function() {
-    output.innerHTML = output.innerHTML.replace(multiplyRegex, '*');
-    output.innerHTML = checkLastFourDigits(output.innerHTML);
+    output.innerHTML = checkLastFourDigits(eval(output.innerHTML));
 });
 
 
 /*
+Evaluate the calculation --> end up with a Number
+243.592948 or 57
+If it's a floating point number, limit it to four dp
+If num = parseInt(num) , return num, else return num.toFixed(4)
+
+
+
 // Declaring constants for all buttons
 const one = document.getElementById('one');
 const two = document.getElementById('two');
@@ -75,4 +78,18 @@ const decimal = document.getElementById('decimal');
 const clear = document.getElementById('clear');
 const add = document.getElementById('add');
 const subtract = document.getElementById('subtract');
+
+
+if str ends in one or more zeros, remove the zeros
+return /0+$/g.test(str) ? str.replace(0, '') : str.toFixed(4);
+
+function checkLastFourDigits(str) {
+       return eval(str) === parseInt(eval(str)) ? eval(str) : (eval(str)).toFixed(4);
+           // If the output is an integer, remove the unneccessary four zeros. Else,
+           // return the floating point number to 4 decimal places.
+   }
+   function checkLastFourDigits(num) {
+   // If str ends in one or more zeros, remove the zeros.
+    return /0+$/g.test(num) ? num.replace(0, '') : num.toFixed(4);
+}
 */
