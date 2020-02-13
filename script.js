@@ -30,9 +30,13 @@ clear.addEventListener('click', function() {
     output.innerHTML = '';
 });
 
-// Click the DEL (Delete) button, remove the last typed character
+// Click the DEL (Delete) button, remove the last typed character. Note: In the HTML document,
+// I have put a space either side of the operators. To factor for this the delete button will
+// remove the last 3 characters (space,operator,space) when an operator is used.
 deleteBtn.addEventListener('click', function() {
-   output.innerHTML = output.innerHTML.slice(0,-1);
+    if ((/\s$/g).test(output.innerHTML)) {
+        output.innerHTML = output.innerHTML.slice(0,-2);
+    } output.innerHTML = output.innerHTML.slice(0,-1);
 });
 
 
@@ -40,15 +44,18 @@ const multiplyRegex = /x/g;
 //const divideRegex = /÷/g;
 //const divideRegex = /&divide;/g;
 
+
+function checkLastFourDigits(str) {
+       return eval(str) === parseInt(eval(str)) ? eval(str) : (eval(str)).toFixed(4);
+           // If the output is an integer, remove the unneccessary four zeros. Else,
+           // return the floating point number to 4 decimal places.
+   }
+
 // Click the equals button, evaluate the string
 equals.addEventListener('click', function() {
-
     output.innerHTML = output.innerHTML.replace(multiplyRegex, '*');
-    output.innerHTML = eval(output.innerHTML).toFixed(4); // display a fixed length number
+    output.innerHTML = checkLastFourDigits(output.innerHTML);
 });
-
-
-
 
 
 /*
