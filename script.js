@@ -4,14 +4,6 @@ const equals = document.getElementById('equals');
 const multiply = document.getElementById('multiply');
 const divide = document.getElementById('divide');
 
-/*
-const displayWidth = document.getElementById('display').scrollWidth;
-const outputWidth = output.scrollWidth;
-output.innerHTML.width < display.length
-// Output overflows if too many numbers are typed. Set a max length for the output string
-// If string.length is greater than 20, throw an error or return
-*/
-
 // Screen output is a string, to be evaluated each time the user clicks 'equals'
 // On clicking a button, the relevant value 'e.g. 1' is added to the string
 // I have applied the class '.blackButtons' to buttons that ADD to the string. This is all buttons besides Clear, Delete and Equals.
@@ -20,33 +12,15 @@ const blackButtons = document.getElementsByClassName('blackButtons');
 const checkForOperator = /[+-/*]\s$/g; // Check if the last value entered was an operator
 const checkForMultiplyOrDivide = /\*|\//g;  // Check if the value entered is 'multiply' or 'divide'
 
-
 for (const value of blackButtons) {
-    value.addEventListener('click', function() {
-
-        if (output.innerHTML.length < 20) { //Prevent display overflow. Substitute this for a proper width value
+    value.addEventListener('click', function() { 
             if (checkForOperator.test(output.innerHTML) === true) { // Check if last input was an operator
                 if (checkForMultiplyOrDivide.test(value.innerHTML) === false) { // Check if user is trying to follow an operator with a divide/multiply
                     output.innerHTML += value.innerHTML;
                 } return;
             } else { output.innerHTML += value.innerHTML; }
-        } return;
-
     });
 }
-
-
-/*
-for (const value of blackButtons) {
-    value.addEventListener('click', function() {
-
-    })
-}
-*/
-
-
-
-
 
 // Click the 'C' (Clear) button, return to an empty screen
 clear.addEventListener('click', function() {
@@ -111,4 +85,15 @@ function checkLastFourDigits(str) {
    // If str ends in one or more zeros, remove the zeros.
     return /0+$/g.test(num) ? num.replace(0, '') : num.toFixed(4);
 }
+
+
+const displayWidth = document.getElementById('display').scrollWidth;
+const outputWidth = output.scrollWidth;
+output.innerHTML.width < display.length
+// Output overflows if too many numbers are typed. Set a max length for the output string
+// If string.length is greater than 20, throw an error or return
+     //   if (output.innerHTML.length < 15) { //Prevent display overflow. Substitute this for a proper width value
+      //  } return;
+
+
 */
