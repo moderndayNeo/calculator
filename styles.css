@@ -12,7 +12,7 @@ body {
     height: 500px;
     border-radius: 5%;
     border: thin grey solid;
-    margin: 5% auto;
+    margin: 25% auto;
     background-color: #111111;
     display: grid;
     grid-template-rows: 1.1fr repeat(5, 1fr);
@@ -22,13 +22,29 @@ body {
    /* box-shadow: 0 0 15px rgba(255,255,255,0.3); */
 }
 
-/*
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 500px) {
     #container {
-        width: 30%;
+        width: 80%;
     }
 }
-*/
+
+@media only screen and (min-width: 700px) {
+    #container {
+        height: 700px;
+        margin: 20% auto;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    #container {
+        height: 500px;
+        width: 40%;
+        margin: 5% auto;
+    }
+    #equals {
+        padding-top: 30%;
+    }
+}
 
 #container div {
     border: thin grey solid;
