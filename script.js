@@ -40,10 +40,18 @@ function checkLastFourDigits(num) {
     return num === parseInt(num) ? num : num.toFixed(4);
 }
 
+function performOperation(valueToEvaluate) {
+    return eval(valueToEvaluate);
+}
+
 // Click the equals button, evaluate the string
 equals.addEventListener('click', function() {
-    output.innerHTML = checkLastFourDigits(eval(output.innerHTML));
+    const rawCalculatedValue = performOperation(output.innerHTML);
+    const shortenedCalculatedValue = checkLastFourDigits(rawCalculatedValue);
+
+    output.innerHTML = shortenedCalculatedValue;
 });
+
 
 
 /*
