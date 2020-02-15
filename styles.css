@@ -19,7 +19,6 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
     padding: 2%;
-   /* box-shadow: 0 0 15px rgba(255,255,255,0.3); */
 }
 
 @media only screen and (min-width: 500px) {
@@ -32,6 +31,7 @@ body {
     #container {
         height: 700px;
         margin: 20% auto;
+        font-size: 120%;
     }
 }
 
@@ -43,6 +43,18 @@ body {
     }
     #equals {
         padding-top: 30%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #container {
+        width: 30%;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    #container {
+        width: 25%;
     }
 }
 
@@ -126,6 +138,5 @@ body {
 
 #zero {
     grid-area: 6/2/7/4;
-   
 }
 
