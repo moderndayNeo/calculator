@@ -8,6 +8,7 @@ function calculateFinalValue(leftValue, operator, rightValue) {
     // '777/432'
     // '.634*-.289'
 
+    // limit to four decimal places
 
 
 

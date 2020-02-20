@@ -88,11 +88,11 @@ body {
     padding-top: 10%;
 }
 
-.blackButtons {
+.numbersAndDecimal {
     background-color: black;
 }
 
-.blackButtons:hover {
+.numbersAndDecimal:hover {
     background-color: #1B0029;
     color: white;
     transition: 0.2s;

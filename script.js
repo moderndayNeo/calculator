@@ -40,15 +40,14 @@ deleteBtn.addEventListener('click', function() {
 Go through the user cases (user types this, user types that etc.)
 For each test case, either send values to backend or throw an error
 
-
 My default state for the screen is named displayZero.
 displayZero is displayed when the user first loads the calculator, and when the user
 clicks Clear.
 
-
 Screen begins at displayZero.
-1) User begins by typing out a number - The number is a string
 
+
+1) User begins by typing out a number - The number is a string
 Then user types an a) operator, b) decimal
 
 1a) User follows the number with an operator
@@ -70,8 +69,6 @@ After decimal user can press number, operator, or decimal.
 If user presses a number, it continues to concatenate to rightValue
 If user presses an operator, return
 If user presses another decimal, return
-
-
 
 
 2) User begins by typing an operator
@@ -98,8 +95,23 @@ b) User types an operator, return
 c) User types a decimal, return
 
 
+Now we have leftValue, operator, rightValue.
+What if user keeps typing: leftValue,operator,rightValue,operator,anotherValue
+Do BODMAS calculations (multiplication, subtraction first)
+Run a regex, search for * or /
+If found, do a calculation around the numbers either side
+(6 * (8) * 4) How to handle this problem?
+Iterate through the calculation multiple times, searching for a * or /
+For each time I find one, insert brackets and calculate
 
-backend
+
+
+Adding parentheses functionality
+Search for parentheses. If they exist, make the calculation within the brackets
+
+
+
+
 
 */
 
