@@ -4,36 +4,89 @@ const equals = document.getElementById('equals');
 const multiply = document.getElementById('multiply');
 const divide = document.getElementById('divide');
 
-// Screen output is a string, to be evaluated each time the user clicks 'equals'
-// On clicking a button, the relevant value 'e.g. 1' is added to the string
-// I have applied the class '.numbersAndDecimal' to buttons that ADD to the string. This is all buttons besides Clear, Delete and Equals.
+// Screen output is a string, to be sent to a calculation function when the user presses 'equals'
+// On clicking a button, the button value e.g. '1','7','+' is added to the string
+// I have applied the classes '.numbersAndDecimal' and '.operators' to values that add to the string.
+//  This is all buttons besides Clear, Delete and Equals.
 const numbersAndDecimal = document.getElementsByClassName('numbersAndDecimal');
+const operators = document.getElementsByClassName('operator');
 
-const checkForOperator = /[+-/*]\s$/g; // Check if the last value entered was an operator
+const checkForoperators = /[+-/*]\s$/g; // Check if the last value entered was an operators
 const checkForMultiplyOrDivide = /\*|\//g;  // Check if the value entered is 'multiply' or 'divide'
 
+// I am working with two strings: output.innerHTML and stringToCalculate
+// output.innerHTML is what the user sees. stringToCalculate is a string that is sent to a function
+// calculateFinalValue() that performs the calculation and returns the final 
+/*
 for (const value of numbersAndDecimal) {
     value.addEventListener('click', function() { 
-            if (checkForOperator.test(output.innerHTML) === true) { // Check if last input was an operator
-                if (checkForMultiplyOrDivide.test(value.innerHTML) === false) { // Check if user is trying to follow an operator with a divide/multiply
+            if (checkForoperators.test(output.innerHTML) === true) { // Check if last input was an operators
+                if (checkForMultiplyOrDivide.test(value.innerHTML) === false) { // Check if user is trying to follow an operators with a divide/multiply
                     output.innerHTML += value.innerHTML;
                 } return;
             } else { output.innerHTML += value.innerHTML; }
     });
 }
+*/
+const userInput = [];
+
+function convertUserInputToString(arr) {
+    let str = '';
+    for (const item of arr) {
+        str += item
+    }
+
+    return str
+}
+
+function setDisplay(str) {
+    output.innerHTML = str
+}
+
+function pushToUserInput(event) {
+    const htmlElement = event.target
+    userInput.push(htmlElement.innerHTML);
+}
+
+function collectInputAndDisplay(event) {
+    pushToUserInput(event)
+    const displayString = convertUserInputToString(userInput)
+    setDisplay(displayString)
+
+}
+
+
+for (const value of numbersAndDecimal) {
+    value.addEventListener('click', collectInputAndDisplay)
+}
+
+for (const value of operators) {
+    value.addEventListener('click', collectInputAndDisplay)
+}
+
+
+
+// for (const value of numbersAndDecimal) {
+//     value.addEventListener('click', function (event) {
+//         console.log({event})
+//         // userInput.push(value.innerHTML)
+//     })
+// }
+
+
 
 // Click the 'C' (Clear) button, return to an empty screen
-clear.addEventListener('click', function() {
+clear.addEventListener('click', function () {
     output.innerHTML = '';
 });
 
 // Click the DEL (Delete) button, remove the last typed character.
-deleteBtn.addEventListener('click', function() {
+deleteBtn.addEventListener('click', function () {
     if ((/\s$/g).test(output.innerHTML)) {
-        output.innerHTML = output.innerHTML.slice(0,-2);
-    // I have put a space either side of the operators. To factor for this the delete button will
-    // remove the last 3 characters (space,operator,space) when an operator is used.
-    } output.innerHTML = output.innerHTML.slice(0,-1);
+        output.innerHTML = output.innerHTML.slice(0, -2);
+        // I have put a space either side of the operators. To factor for this the delete button will
+        // remove the last 3 characters (space,operator,space) when an operator is used.
+    } output.innerHTML = output.innerHTML.slice(0, -1);
 });
 
 /* breakdown the back-end inputs into leftValue, operator, rightValue.
@@ -125,7 +178,7 @@ function performOperation(valueToEvaluate) {
 }
 
 // Click the equals button, evaluate the string
-equals.addEventListener('click', function() {
+equals.addEventListener('click', function () {
     const rawCalculatedValue = performOperation(output.innerHTML);
     const shortenedCalculatedValue = checkLastFourDigits(rawCalculatedValue);
 
