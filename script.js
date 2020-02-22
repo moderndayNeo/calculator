@@ -28,6 +28,7 @@ for (const value of numbersAndDecimal) {
     });
 }
 */
+const OPERATOR_VALUES = '+-/*'
 const userInput = [];
 
 function convertUserInputToString(arr) {
@@ -43,13 +44,40 @@ function setDisplay(str) {
     output.innerHTML = str
 }
 
-function pushToUserInput(event) {
-    const htmlElement = event.target
-    userInput.push(htmlElement.innerHTML);
+function pushToUserInput(value) {
+    userInput.push(value);
+}
+
+
+
+function isOperator(val) {
+    return OPERATOR_VALUES.includes(val)
+}
+
+function getLastValue(arr) {
+    return arr.length > 0 ? arr[arr.length - 1] : undefined
+}
+
+function isInputValid(desiredValue) {
+    const lastValue = getLastValue(userInput)
+    console.log({ desiredValue, lastValue })
+    if (isOperator(lastValue)) {
+        if (isOperator(desiredValue)) {
+            return false
+        }
+    }
+    return true
+}
+
+function stripWhitespace(str) {
+    return str.trim()
 }
 
 function collectInputAndDisplay(event) {
-    pushToUserInput(event)
+    const value = stripWhitespace(event.target.innerHTML)
+    if (isInputValid(value)) {
+        pushToUserInput(value)
+    }
     const displayString = convertUserInputToString(userInput)
     setDisplay(displayString)
 
