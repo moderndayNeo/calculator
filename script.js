@@ -102,11 +102,16 @@ for (const value of operators) {
 //     })
 // }
 
-
+function emptyTheArray(arr) {
+    while (arr.length > 0) {
+        arr.pop()
+    }
+}
 
 // Click the 'C' (Clear) button, return to an empty screen
 clear.addEventListener('click', function () {
     output.innerHTML = '';
+    emptyTheArray(userInput)
 });
 
 // Click the DEL (Delete) button, remove the last typed character.
