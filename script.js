@@ -31,7 +31,7 @@ for (const value of numbersAndDecimal) {
 const OPERATOR_VALUES = '+-/*'
 const userInput = [];
 
-function convertUserInputToString(arr) {
+function convertArrayToString(arr) {
     let str = '';
     for (const item of arr) {
         str += item
@@ -48,8 +48,6 @@ function pushToUserInput(value) {
     userInput.push(value);
 }
 
-
-
 function isOperator(val) {
     return OPERATOR_VALUES.includes(val)
 }
@@ -60,12 +58,15 @@ function getLastValue(arr) {
 
 function isInputValid(desiredValue) {
     const lastValue = getLastValue(userInput)
-    console.log({ desiredValue, lastValue })
-    if (isOperator(lastValue)) {
-        if (isOperator(desiredValue)) {
-            return false
-        }
+
+    if (!isOperator(lastValue)) {
+        return true
     }
+
+    if (isOperator(desiredValue)) {
+        return false
+    }
+
     return true
 }
 
@@ -78,7 +79,7 @@ function collectInputAndDisplay(event) {
     if (isInputValid(value)) {
         pushToUserInput(value)
     }
-    const displayString = convertUserInputToString(userInput)
+    const displayString = convertArrayToString(userInput)
     setDisplay(displayString)
 
 }
