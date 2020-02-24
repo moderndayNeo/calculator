@@ -1,5 +1,5 @@
 # Table Of Contents
-* View the calculator here https://moderndayneo.github.io/Calculator/
+* View the calculator here https://moderndayneo.github.io/calculator/ 
 * [Outline](#outline)
 * [Techonologies](#technologies)
 * [Illustrations](#illustrations)
