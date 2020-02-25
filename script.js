@@ -109,15 +109,10 @@ deleteBtn.addEventListener('click', function () {
 
 
 /* breakdown the back-end inputs into leftValue, operator, rightValue.
-Go through the user cases (user types this, user types that etc.)
-For each test case, either send values to backend or throw an error
-
 My default state for the screen is named displayZero.
 displayZero is displayed when the user first loads the calculator, and when the user
 clicks Clear.
-
 Screen begins at displayZero.
-
 
 1) User begins by typing out a number - The number is a string
 Then user types an a) operator, b) decimal
@@ -142,7 +137,6 @@ If user presses a number, it continues to concatenate to rightValue
 If user presses an operator, return
 If user presses another decimal, return
 
-
 2) User begins by typing an operator
 a) If at displayZero the user types an operator, zero is assigned to leftValue,
 operator is assigned to operator.
@@ -155,7 +149,6 @@ If user types a decimal (so far zero, operator, decimal), it becomes beginning o
 If user follows with a number, it becomes rightValue
 If user tries to follow with an operator or decimal, return.
 
-
 3) User begins by typing a decimal. It becomes part of the string for leftValue.
 User then types a number, operator or decimal.
 a) User types a number, it continues to concatenate to string
@@ -166,7 +159,6 @@ a) User types a number, it continues to concatenate to string
 b) User types an operator, return
 c) User types a decimal, return
 
-
 Now we have leftValue, operator, rightValue.
 What if user keeps typing: leftValue,operator,rightValue,operator,anotherValue
 Do BODMAS calculations (multiplication, subtraction first)
@@ -176,15 +168,8 @@ If found, do a calculation around the numbers either side
 Iterate through the calculation multiple times, searching for a * or /
 For each time I find one, insert brackets and calculate
 
-
-
 Adding parentheses functionality
 Search for parentheses. If they exist, make the calculation within the brackets
-
-
-
-
-
 */
 
 
@@ -192,17 +177,18 @@ function checkLastFourDigits(num) {
     return num === parseInt(num) ? num : num.toFixed(4);
 }
 
-function performOperation(valueToEvaluate) {
+function performEvaluation(valueToEvaluate) {
     return eval(valueToEvaluate);
 }
 
 // Click the equals button, evaluate the string
 equals.addEventListener('click', function () {
-    const rawCalculatedValue = performOperation(output.innerHTML);
+    const rawCalculatedValue = performEvaluation(output.innerHTML);
     const shortenedCalculatedValue = checkLastFourDigits(rawCalculatedValue);
 
-    output.innerHTML = shortenedCalculatedValue;
+    setDisplay(shortenedCalculatedValue);
 
+    // on click equals, reset userInput to the calculated value.
     //   calculateFinalValue(leftValue, operator, rightValue)
 });
 
@@ -226,14 +212,10 @@ const clear = document.getElementById('clear');
 const add = document.getElementById('add');
 const subtract = document.getElementById('subtract');
 
-
-
 // const multiplyRegex = /x/g;
 // output.innerHTML = output.innerHTML.replace(multiplyRegex, '*');
 //const divideRegex = /÷/g;
 //const divideRegex = /&divide;/g;
-
-
 
 if str ends in one or more zeros, remove the zeros
 return /0+$/g.test(str) ? str.replace(0, '') : str.toFixed(4);
@@ -248,7 +230,6 @@ function checkLastFourDigits(str) {
     return /0+$/g.test(num) ? num.replace(0, '') : num.toFixed(4);
 }
 
-
 const displayWidth = document.getElementById('display').scrollWidth;
 const outputWidth = output.scrollWidth;
 output.innerHTML.width < display.length
@@ -256,6 +237,5 @@ output.innerHTML.width < display.length
 // If string.length is greater than 20, throw an error or return
      //   if (output.innerHTML.length < 15) { //Prevent display overflow. Substitute this for a proper width value
       //  } return;
-
 
 */
