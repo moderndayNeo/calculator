@@ -124,8 +124,9 @@ function removeLastFromString(str) {
 }
 
 deleteBtn.addEventListener('click', function () {
-    output.innerHTML = removeLastFromString(output.innerHTML)
     userInput.pop()
+    const displayStringLessLastChar = convertArrayToString(userInput)
+    setDisplay(displayStringLessLastChar)
 })
 
 
