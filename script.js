@@ -181,13 +181,24 @@ function performEvaluation(valueToEvaluate) {
     return eval(valueToEvaluate);
 }
 
-function evaluateInputAndDisplay(event) {
+// const calculatedArray = setArrayAsCalculatedValue(calculatedValue)
+// userInput = calculatedArray
+
+function setArrayAsCalculatedValue(calculatedValue) {
+    const calculatedArray = []
+    for (let i = 0; i < calculatedValue.length; i++) {
+        calculatedArray.push(calculatedValue[i])
+    }
+    return calculatedArray
+}
+
+function evaluateInputAndDisplay() {
     const value = stripWhitespace(output.innerHTML)
     const rawCalculatedValue = performEvaluation(value);
 
     const shortenedCalculatedValue = checkLastFourDigits(rawCalculatedValue);
     setDisplay(shortenedCalculatedValue);
-
+    console.log(userInput)
 }
 
 // Click the equals button, evaluate the string
