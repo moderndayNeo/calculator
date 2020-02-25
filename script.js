@@ -11,23 +11,9 @@ const divide = document.getElementById('divide');
 const numbersAndDecimal = document.getElementsByClassName('numbersAndDecimal');
 const operators = document.getElementsByClassName('operator');
 
-const checkForoperators = /[+-/*]\s$/g; // Check if the last value entered was an operators
-const checkForMultiplyOrDivide = /\*|\//g;  // Check if the value entered is 'multiply' or 'divide'
+//const checkForoperators = /[+-/*]\s$/g; // Check if the last value entered was an operators
+//const checkForMultiplyOrDivide = /\*|\//g;  // Check if the value entered is 'multiply' or 'divide'
 
-// I am working with two strings: output.innerHTML and stringToCalculate
-// output.innerHTML is what the user sees. stringToCalculate is a string that is sent to a function
-// calculateFinalValue() that performs the calculation and returns the final 
-/*
-for (const value of numbersAndDecimal) {
-    value.addEventListener('click', function() { 
-            if (checkForoperators.test(output.innerHTML) === true) { // Check if last input was an operators
-                if (checkForMultiplyOrDivide.test(value.innerHTML) === false) { // Check if user is trying to follow an operators with a divide/multiply
-                    output.innerHTML += value.innerHTML;
-                } return;
-            } else { output.innerHTML += value.innerHTML; }
-    });
-}
-*/
 const OPERATOR_VALUES = '+-/*'
 const userInput = [];
 
@@ -94,14 +80,6 @@ for (const value of operators) {
     value.addEventListener('click', collectInputAndDisplay)
 }
 
-
-
-// for (const value of numbersAndDecimal) {
-//     value.addEventListener('click', function (event) {
-//         console.log({event})
-//         // userInput.push(value.innerHTML)
-//     })
-// }
 
 function emptyTheArray(arr) {
     while (arr.length > 0) {
