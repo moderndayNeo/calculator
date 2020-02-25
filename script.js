@@ -181,16 +181,20 @@ function performEvaluation(valueToEvaluate) {
     return eval(valueToEvaluate);
 }
 
-// Click the equals button, evaluate the string
-equals.addEventListener('click', function () {
-    const rawCalculatedValue = performEvaluation(output.innerHTML);
-    const shortenedCalculatedValue = checkLastFourDigits(rawCalculatedValue);
+function evaluateInputAndDisplay(event) {
+    const value = stripWhitespace(output.innerHTML)
+    const rawCalculatedValue = performEvaluation(value);
 
+    const shortenedCalculatedValue = checkLastFourDigits(rawCalculatedValue);
     setDisplay(shortenedCalculatedValue);
+
+}
+
+// Click the equals button, evaluate the string
+equals.addEventListener('click', evaluateInputAndDisplay)
 
     // on click equals, reset userInput to the calculated value.
     //   calculateFinalValue(leftValue, operator, rightValue)
-});
 
 
 
