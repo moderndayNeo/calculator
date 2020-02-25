@@ -110,10 +110,23 @@ function emptyTheArray(arr) {
 
 // Click the 'C' (Clear) button, return to an empty screen
 clear.addEventListener('click', function () {
-    output.innerHTML = '';
+    output.innerHTML = ''; // or put DisplayString here?
     emptyTheArray(userInput)
 });
 
+// const stringLessLastCharacter = removeLastFromString(str)
+
+function removeLastFromString(str) {
+    return str.slice(0, -1)
+}
+
+deleteBtn.addEventListener('click', function () {
+    output.innerHTML = removeLastFromString(output.innerHTML)
+    userInput.pop()
+})
+
+
+/*
 // Click the DEL (Delete) button, remove the last typed character.
 deleteBtn.addEventListener('click', function () {
     if ((/\s$/g).test(output.innerHTML)) {
@@ -122,6 +135,7 @@ deleteBtn.addEventListener('click', function () {
         // remove the last 3 characters (space,operator,space) when an operator is used.
     } output.innerHTML = output.innerHTML.slice(0, -1);
 });
+*/
 
 /* breakdown the back-end inputs into leftValue, operator, rightValue.
 Go through the user cases (user types this, user types that etc.)
