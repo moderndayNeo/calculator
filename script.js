@@ -184,10 +184,10 @@ function performEvaluation(valueToEvaluate) {
 // const calculatedArray = setArrayAsCalculatedValue(calculatedValue)
 // userInput = calculatedArray
 
-function setArrayAsCalculatedValue(calculatedValue) {
+function setArrayAsCalculatedValue(stringValue) {
     const calculatedArray = []
-    for (let i = 0; i < calculatedValue.length; i++) {
-        calculatedArray.push(calculatedValue[i])
+    for (let i = 0; i < stringValue.length; i++) {
+        calculatedArray.push(stringValue[i])
     }
     return calculatedArray
 }
@@ -198,6 +198,7 @@ function evaluateInputAndDisplay() {
 
     const shortenedCalculatedValue = checkLastFourDigits(rawCalculatedValue);
     setDisplay(shortenedCalculatedValue);
+    userInput = setArrayAsCalculatedValue(shortenedCalculatedValue)
     console.log(userInput)
 }
 
