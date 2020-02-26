@@ -11,23 +11,9 @@ const divide = document.getElementById('divide');
 const numbersAndDecimal = document.getElementsByClassName('numbersAndDecimal');
 const operators = document.getElementsByClassName('operator');
 
-const checkForoperators = /[+-/*]\s$/g; // Check if the last value entered was an operators
-const checkForMultiplyOrDivide = /\*|\//g;  // Check if the value entered is 'multiply' or 'divide'
+//const checkForoperators = /[+-/*]\s$/g; // Check if the last value entered was an operators
+//const checkForMultiplyOrDivide = /\*|\//g;  // Check if the value entered is 'multiply' or 'divide'
 
-// I am working with two strings: output.innerHTML and stringToCalculate
-// output.innerHTML is what the user sees. stringToCalculate is a string that is sent to a function
-// calculateFinalValue() that performs the calculation and returns the final 
-/*
-for (const value of numbersAndDecimal) {
-    value.addEventListener('click', function() { 
-            if (checkForoperators.test(output.innerHTML) === true) { // Check if last input was an operators
-                if (checkForMultiplyOrDivide.test(value.innerHTML) === false) { // Check if user is trying to follow an operators with a divide/multiply
-                    output.innerHTML += value.innerHTML;
-                } return;
-            } else { output.innerHTML += value.innerHTML; }
-    });
-}
-*/
 const OPERATOR_VALUES = '+-/*'
 const userInput = [];
 
@@ -74,6 +60,7 @@ function stripWhitespace(str) {
     return str.trim()
 }
 
+
 function collectInputAndDisplay(event) {
     const value = stripWhitespace(event.target.innerHTML)
     if (isInputValid(value)) {
@@ -94,29 +81,32 @@ for (const value of operators) {
 }
 
 
+function emptyTheArray(arr) {
+    while (arr.length > 0) {
+        arr.pop()
+    }
+}
 
-// for (const value of numbersAndDecimal) {
-//     value.addEventListener('click', function (event) {
-//         console.log({event})
-//         // userInput.push(value.innerHTML)
-//     })
-// }
-
-
+function emptyTheString(str) {
+    return str = ''
+}
 
 // Click the 'C' (Clear) button, return to an empty screen
 clear.addEventListener('click', function () {
-    output.innerHTML = '';
+    emptyTheArray(userInput)
+    setDisplay('')
 });
 
-// Click the DEL (Delete) button, remove the last typed character.
+function removeLastFromString(str) {
+    return str.slice(0, -1)
+}
+
 deleteBtn.addEventListener('click', function () {
-    if ((/\s$/g).test(output.innerHTML)) {
-        output.innerHTML = output.innerHTML.slice(0, -2);
-        // I have put a space either side of the operators. To factor for this the delete button will
-        // remove the last 3 characters (space,operator,space) when an operator is used.
-    } output.innerHTML = output.innerHTML.slice(0, -1);
-});
+    userInput.pop()
+    const displayStringLessLastChar = convertArrayToString(userInput)
+    setDisplay(displayStringLessLastChar)
+})
+
 
 /* breakdown the back-end inputs into leftValue, operator, rightValue.
 Go through the user cases (user types this, user types that etc.)
@@ -213,7 +203,7 @@ equals.addEventListener('click', function () {
 
     output.innerHTML = shortenedCalculatedValue;
 
-    calculateFinalValue(leftValue, operator, rightValue)
+    //   calculateFinalValue(leftValue, operator, rightValue)
 });
 
 
