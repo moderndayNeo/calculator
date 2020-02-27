@@ -186,10 +186,6 @@ function performEvaluation(valueToEvaluate) {
     return eval(valueToEvaluate);
 }
 
-// const calculatedArray = setArrayAsCalculatedValue(calculatedValue)
-// userInput = calculatedArray
-
-
 function buildArrayFromStringCharacters(stringValue) {
     let calculatedArray = []
     for (let i = 0; i < stringValue.length; i++) {
