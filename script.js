@@ -69,6 +69,7 @@ function collectInputAndDisplay(event) {
     }
     const displayString = convertArrayToString(userInput)
     setDisplay(displayString)
+    console.log('userInput after button press is: ' + userInput)
 }
 
 
@@ -197,12 +198,14 @@ function setArrayAsCalculatedValue(stringValue) {
 }
 
 function evaluateInputAndDisplay() {
-    const value = stripWhitespace(output.innerHTML)
-    const rawCalculatedValue = performEvaluation(value);
+    // const value = stripWhitespace(output.innerHTML)
+    const stringToBeCalculated = convertArrayToString(userInput)
+    const rawCalculatedValue = performEvaluation(stringToBeCalculated);
 
     const shortenedCalculatedValue = checkLastFourDigits(rawCalculatedValue);
     setDisplay(shortenedCalculatedValue);
     userInput = setArrayAsCalculatedValue(shortenedCalculatedValue)
+
     console.log(userInput)
 }
 
