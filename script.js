@@ -103,12 +103,7 @@ function performEvaluation(valueToEvaluate) {
 }
 
 function buildArrayFromStringCharacters(stringValue) {
-    let arrayFromString = []
-    for (let i = 0; i < stringValue.length; i++) {
-        arrayFromString.push(stringValue[i])
-        //  console.log('arrayFromString during loop is: ' + arrayFromString)
-    }
-    return arrayFromString
+    return stringValue.split('')
 }
 
 function evaluateInputAndDisplay() {
