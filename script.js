@@ -189,10 +189,12 @@ function performEvaluation(valueToEvaluate) {
 // const calculatedArray = setArrayAsCalculatedValue(calculatedValue)
 // userInput = calculatedArray
 
-function setArrayAsCalculatedValue(stringValue) {
-    const calculatedArray = []
+
+function buildArrayFromStringCharacters(stringValue) {
+    let calculatedArray = []
     for (let i = 0; i < stringValue.length; i++) {
         calculatedArray.push(stringValue[i])
+        //  console.log('calculatedArray during loop is: ' + calculatedArray)
     }
     return calculatedArray
 }
@@ -204,8 +206,8 @@ function evaluateInputAndDisplay() {
 
     const shortenedCalculatedValue = checkLastFourDigits(rawCalculatedValue);
     setDisplay(shortenedCalculatedValue);
-    userInput = setArrayAsCalculatedValue(shortenedCalculatedValue)
-
+    const calculatedValueToString = shortenedCalculatedValue.toString()
+    userInput = buildArrayFromStringCharacters(calculatedValueToString)
     console.log(userInput)
 }
 
