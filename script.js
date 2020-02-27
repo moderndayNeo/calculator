@@ -52,12 +52,8 @@ function isInputValid(desiredValue) {
     return true
 }
 
-function stripWhitespace(str) {
-    return str.trim()
-}
-
 function collectInputAndDisplay(event) {
-    const value = stripWhitespace(event.target.innerHTML)
+    const value = event.target.innerHTML
     if (isInputValid(value)) {
         pushToUserInput(value)
     }
@@ -190,4 +186,8 @@ equals.addEventListener('click', evaluateInputAndDisplay)
     Default state for the screen : displayZero.
     displayZero is displayed when the user first loads the calculator, and when the user
     clicks Clear.
+
+    function stripWhitespace(str) {
+    return str.trim()
+
     */
