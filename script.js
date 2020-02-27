@@ -102,11 +102,13 @@ function removeLastFromString(str) {
     return str.slice(0, -1)
 }
 
-deleteBtn.addEventListener('click', function () {
+function removeLastTypedCharacter() {
     userInput.pop()
     const displayStringLessLastChar = convertArrayToString(userInput)
     setDisplay(displayStringLessLastChar)
-})
+}
+
+deleteBtn.addEventListener('click', removeLastTypedCharacter)
 
 
 /* breakdown the back-end inputs into leftValue, operator, rightValue.
