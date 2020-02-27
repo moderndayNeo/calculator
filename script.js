@@ -15,7 +15,9 @@ const operators = document.getElementsByClassName('operator');
 //const checkForMultiplyOrDivide = /\*|\//g;  // Check if the value entered is 'multiply' or 'divide'
 
 const OPERATOR_VALUES = '+-/*'
-const userInput = [];
+// const userInput = [];
+let userInput = [];
+
 
 function convertArrayToString(arr) {
     let str = '';
@@ -60,7 +62,6 @@ function stripWhitespace(str) {
     return str.trim()
 }
 
-
 function collectInputAndDisplay(event) {
     const value = stripWhitespace(event.target.innerHTML)
     if (isInputValid(value)) {
@@ -68,7 +69,6 @@ function collectInputAndDisplay(event) {
     }
     const displayString = convertArrayToString(userInput)
     setDisplay(displayString)
-
 }
 
 
@@ -93,7 +93,8 @@ function emptyTheString(str) {
 
 // Click the 'C' (Clear) button, return to an empty screen
 clear.addEventListener('click', function () {
-    emptyTheArray(userInput)
+    // emptyTheArray(userInput)
+    userInput = []
     setDisplay('')
 });
 
@@ -116,6 +117,7 @@ Screen begins at displayZero.
 
 1) User begins by typing out a number - The number is a string
 Then user types an a) operator, b) decimal
+console.log(userInput)
 
 1a) User follows the number with an operator
 Two things happen:
