@@ -49,7 +49,33 @@ function calculateFinalValue(inputArray) {
     //     return isOperator(val)
     // }
 
+    function calculate(leftValue, operator, rightValue) {
+        const leftNumber = parseFloat(leftValue)
+        const rightNumber = parseFloat(rightValue)
+        let calculatedNumber = 0
 
+        switch (operator) {
+            case '/':
+                calculatedNumber = leftNumber / rightNumber;
+                break;
+            case '*':
+                calculatedNumber = leftNumber * rightNumber;
+                break;
+            case '+':
+                calculatedNumber = leftNumber + rightNumber;
+                break;
+            case '-':
+                calculatedNumber = leftNumber - rightNumber;
+                break;
+        }
+
+        return calculatedNumber.toString()
+    }
+
+    // iterate through array
+    // check for operators. while operators exist in the array,
+    // send the array to the calculation function, a switch statement
+    // that takes two number strings and an operator
 
 
 
