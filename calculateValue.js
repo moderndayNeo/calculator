@@ -9,14 +9,10 @@ function calculateFinalValue(inputArray) {
     // '.634*-.289'
     // limit to four decimal places
 
-    const OPERATOR_VALUES = '+-*/'
-
-    function isOperator(str) {
-        return OPERATOR_VALUES.includes(str)
-    }
-
     // const myArr = ['6', '-', '1', '3', '.', '2', '+', '5']
     // const arr2 = ['8', '5', '+', '1', '7', '.', '4', '/', '2', '.', '5', '*', '8', '7', '1', '5', '9']
+
+    //      --- Beginning: merge Consecutives ----
 
     function countTheOperators(arr) {
         const opCount = arr.filter(x => OPERATOR_VALUES.includes(x)).length
@@ -42,14 +38,20 @@ function calculateFinalValue(inputArray) {
         return arr
     }
 
+    //      --- End: merge Consecutives
 
-    // const arrayToBeCalculated = joinNumberValues(myArr)
-    //  console.log(arrayToBeCalculated)
-    console.log(joinNumberValues(inputArray))
-    // console.log(6)
 
+    const mergedArray = joinNumberValues(inputArray)
+
+    console.log(mergedArray)
 
     // function checkArrayForOperator(val) {
     //     return isOperator(val)
     // }
+
+
+
+
+
+
 }

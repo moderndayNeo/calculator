@@ -107,7 +107,7 @@ function buildArrayFromStringCharacters(stringValue) {
 }
 
 // const myArr = ['6', '-', '1', '3', '.', '2', '+', '5']
-const arr2 = ['8', '5', '+', '1', '7', '.', '4', '/', '2', '.', '5', '*', '8', '7', '1', '5', '9']
+// const arr2 = ['8', '5', '+', '1', '7', '.', '4', '/', '2', '.', '5', '*', '8', '7', '1', '5', '9']
 
 function evaluateInputAndDisplay() {
     const stringToBeCalculated = convertArrayToString(userInput)
@@ -117,9 +117,9 @@ function evaluateInputAndDisplay() {
     setDisplay(shortenedCalculatedValue);
 
     const calculatedValueToString = shortenedCalculatedValue.toString()
-    userInput = buildArrayFromStringCharacters(calculatedValueToString)
+    // userInput = buildArrayFromStringCharacters(calculatedValueToString)
     // console.log(userInput)
-    calculateFinalValue(arr2)
+    calculateFinalValue(userInput)
     
 }
 
