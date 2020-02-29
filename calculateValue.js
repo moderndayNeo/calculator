@@ -1,3 +1,77 @@
+function countTheOperators(arr) {
+    const opCount = arr.filter(x => OPERATOR_VALUES.includes(x)).length
+    return opCount
+}
+
+function calculate(leftValue, operator, rightValue) {
+    const leftNumber = parseFloat(leftValue)
+    const rightNumber = parseFloat(rightValue)
+    let calculatedNumber = 0
+
+    switch (operator) {
+        case '/':
+            calculatedNumber = leftNumber / rightNumber;
+            break;
+        case '*':
+            calculatedNumber = leftNumber * rightNumber;
+            break;
+        case '+':
+            calculatedNumber = leftNumber + rightNumber;
+            break;
+        case '-':
+            calculatedNumber = leftNumber - rightNumber;
+            break;
+    }
+
+    return calculatedNumber.toString()
+}
+
+
+function isMoreThanOneValue(arr) {
+    return arr.length > 1
+}
+
+function isMultiplyOrDivide(val) {
+    return val === '*' || val === '/'
+}
+
+function isAddOrSubtract(val) {
+    return val === '+' || val === '-'
+}
+
+const NUMBERS_AND_DECIMAL = '0123456789.'
+
+function isANumberOrDecimal(val) {
+    return NUMBERS_AND_DECIMAL.includes(val)
+}
+
+function emptyTheString(str) {
+    return str = ''
+}
+
+function mergeAnyConsecutiveNumbers(arr) {
+    let holdingValue = ''
+    const arrayWithNumbersConcatenated = []
+
+    for (let i = 0; i < arr.length; i++) {
+        const currentArrayValue = arr[i]
+
+        if (isANumberOrDecimal(currentArrayValue)) {
+            holdingValue += currentArrayValue
+        } else {
+            arrayWithNumbersConcatenated.push(holdingValue)
+            arrayWithNumbersConcatenated.push(currentArrayValue)
+            emptyTheString(holdingValue)
+        }
+    }
+    arrayWithNumbersConcatenated.push(holdingValue)
+
+    return arrayWithNumbersConcatenated
+}
+
+
+
+
 function calculateFinalValue(inputArray) {
 
     //      --- Beginning: merge consecutive number strings ----
@@ -5,63 +79,15 @@ function calculateFinalValue(inputArray) {
     // passed to joinNumberValues(arr)
     // will yield mergedArray ['13','+','1','-','2.8']
 
-    function countTheOperators(arr) {
-        const opCount = arr.filter(x => OPERATOR_VALUES.includes(x)).length
-        return opCount
-    }
+
+    const mergedArray = mergeAnyConsecutiveNumbers(inputArray)
+    console.log(mergedArray)
 
     const operatorCount = countTheOperators(inputArray)
 
-    function mergeConsecutiveValues(arr) {
-        for (let i = 0; i < arr.length; i++) {
-            const currentValue = arr[i]
-            const nextValue = arr[i + 1]
-            function spliceConsecutives(arr) {
-                return arr.splice(i, 2, currentValue + nextValue)
-            }  // Concatenate consecutive number strings
-
-            if (!isOperator(currentValue) && !isOperator(nextValue)) {
-                arr = spliceConsecutives(arr)
-            }
-        }
-    }
-
-    function joinNumberValues(arr) {
-        while (arr.length > ((2 * operatorCount) + 1)) {
-            mergeConsecutiveValues(arr)
-        }
-        return arr
-    }
-
     //      --- End: merge consecutive number values ---
 
-    const mergedArray = joinNumberValues(inputArray)
-    // console.log('mergedArray is: ' + mergedArray)
-
     // At this point I have a mergedArray in the format [numstring,op,numstring,op,numstring,op,...numstring]
-
-    function calculate(leftValue, operator, rightValue) {
-        const leftNumber = parseFloat(leftValue)
-        const rightNumber = parseFloat(rightValue)
-        let calculatedNumber = 0
-
-        switch (operator) {
-            case '/':
-                calculatedNumber = leftNumber / rightNumber;
-                break;
-            case '*':
-                calculatedNumber = leftNumber * rightNumber;
-                break;
-            case '+':
-                calculatedNumber = leftNumber + rightNumber;
-                break;
-            case '-':
-                calculatedNumber = leftNumber - rightNumber;
-                break;
-        }
-
-        return calculatedNumber.toString()
-    }
 
     // iterate through mergedArray
     // check for operators. while operators exist in the array,
@@ -69,17 +95,6 @@ function calculateFinalValue(inputArray) {
     // that takes two number strings and an operator. It returns a number string.
     // This number string is then spliced back into the mergedArray
 
-    function isMoreThanOneValue(arr) {
-        return arr.length > 1
-    }
-
-    function isMultiplyOrDivide(val) {
-        return val === '*' || val === '/'
-    }
-
-    function isAddOrSubtract(val) {
-        return val === '+' || val === '-'
-    }
 
     function reduceToSingleValue(arr) {
 
@@ -118,64 +133,95 @@ function calculateFinalValue(inputArray) {
 }
 
 
-    //  while (arr.includes('/')) {
-        //         arr = sendNumbersEitherSideToCalculation('/')
-        //     }
-        //     while (arr.includes('*')) {
-            //         arr = sendNumbersEitherSideToCalculation('*')
-            //     }
-            //     while (arr.includes('+')) {
-                //         arr = sendNumbersEitherSideToCalculation('+')
-                //     }
-                //     while (arr.includes('-')) {
-                    //         arr = sendNumbersEitherSideToCalculation('-')
-                    //     }
-
-                    //     function checkWhichAppearsEarlier()
-                    //     if (positionOfMultiply > positionOfDivide) {
-                        //         return 'multiplyAppearsEarlier'
-                        //     } else { return 'divideAppearsEarlier' }
-                        // }
-
-                        // if (checkWhichAppearsEarlier() === 'multiplyAppearsEarlier')
-                        //           arr = sendNumbersEitherSideToCalculation('/')
-                        //             arr = sendNumbersEitherSideToCalculation('*')
-                        //         }
-                        //         while (arr.includes('+') || arr.includes('-')) {
-                            //             arr = sendNumbersEitherSideToCalculation('+')
-                            //             arr = sendNumbersEitherSideToCalculation('-')
-                            //         }
-
-                            //         return arr
 
 
 
 
-                                //CAN TRIM THIS DOWN.
 
-                                //     while (arr.includes('/')) {
-                                //         if (arr.includes('*')) {
+/*
+//  while (arr.includes('/')) {
+//         arr = sendNumbersEitherSideToCalculation('/')
+//     }
+//     while (arr.includes('*')) {
+//         arr = sendNumbersEitherSideToCalculation('*')
+//     }
+//     while (arr.includes('+')) {
+//         arr = sendNumbersEitherSideToCalculation('+')
+//     }
+//     while (arr.includes('-')) {
+//         arr = sendNumbersEitherSideToCalculation('-')
+//     }
 
-                                //             const positionOfMultiply = arr.indexOf('*')
-                                //             const positionOfDivide = arr.indexOf('/')
+//     function checkWhichAppearsEarlier()
+//     if (positionOfMultiply > positionOfDivide) {
+//         return 'multiplyAppearsEarlier'
+//     } else { return 'divideAppearsEarlier' }
+// }
 
-                                //             if (positionOfMultiply < positionOfDivide) {
-                                //                 arr = sendNumbersEitherSideToCalculation('*')
-                                //             } else { arr = sendNumbersEitherSideToCalculation('/') }
+// if (checkWhichAppearsEarlier() === 'multiplyAppearsEarlier')
+//           arr = sendNumbersEitherSideToCalculation('/')
+//             arr = sendNumbersEitherSideToCalculation('*')
+//         }
+//         while (arr.includes('+') || arr.includes('-')) {
+//             arr = sendNumbersEitherSideToCalculation('+')
+//             arr = sendNumbersEitherSideToCalculation('-')
+//         }
 
-                                //         } else { arr = sendNumbersEitherSideToCalculation('/') }
-                                //     }
+//         return arr
 
-                                //     while (arr.includes('+')) {
-                                //         if (arr.includes('-')) {
 
-                                //             const positionOfPlus = arr.indexOf('+')
-                                //             const positionOfMinus = arr.indexOf('-')
 
-                                //             if (positionOfPlus < positionOfMinus) {
-                                //                 arr = sendNumbersEitherSideToCalculation('+')
-                                //             } else { arr = sendNumbersEitherSideToCalculation('-') }
 
-                                //         } else { arr = sendNumbersEitherSideToCalculation('+') }
-                                //     }
-                                // }
+//CAN TRIM THIS DOWN.
+
+//     while (arr.includes('/')) {
+//         if (arr.includes('*')) {
+
+//             const positionOfMultiply = arr.indexOf('*')
+//             const positionOfDivide = arr.indexOf('/')
+
+//             if (positionOfMultiply < positionOfDivide) {
+//                 arr = sendNumbersEitherSideToCalculation('*')
+//             } else { arr = sendNumbersEitherSideToCalculation('/') }
+
+//         } else { arr = sendNumbersEitherSideToCalculation('/') }
+//     }
+
+//     while (arr.includes('+')) {
+//         if (arr.includes('-')) {
+
+//             const positionOfPlus = arr.indexOf('+')
+//             const positionOfMinus = arr.indexOf('-')
+
+//             if (positionOfPlus < positionOfMinus) {
+//                 arr = sendNumbersEitherSideToCalculation('+')
+//             } else { arr = sendNumbersEitherSideToCalculation('-') }
+
+//         } else { arr = sendNumbersEitherSideToCalculation('+') }
+//     }
+// }
+
+
+function mergeConsecutiveValues(arr) {
+for (let i = 0; i < arr.length; i++) {
+const currentValue = arr[i]
+const nextValue = arr[i + 1]
+function spliceConsecutives(arr) {
+return arr.splice(i, 2, currentValue + nextValue)
+}  // Concatenate consecutive number strings
+
+if (!isOperator(currentValue) && !isOperator(nextValue)) {
+arr = spliceConsecutives(arr)
+}
+}
+}
+
+function joinNumberValues(arr) {
+while (arr.length > ((2 * operatorCount) + 1)) {
+mergeConsecutiveValues(arr)
+}
+return arr
+}
+const mergedArray = joinNumberValues(inputArray)
+
+*/
