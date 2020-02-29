@@ -1,18 +1,9 @@
 function calculateFinalValue(inputArray) {
-    // leftValue, operator, rightValue
-    // code as follows:  if (operator === '*') { return leftValue * rightValue }...etc..
-    // calculateValue will receive an array [num,op,num,op,...,num]
-    // 
-    // '.95*17
-    // '3.5+-8'
-    // '777/432'
-    // '.634*-.289'
-    // limit to four decimal places
 
-    // const myArr = ['6', '-', '1', '3', '.', '2', '+', '5']
-    // const arr2 = ['8', '5', '+', '1', '7', '.', '4', '/', '2', '.', '5', '*', '8', '7', '1', '5', '9']
-
-    //      --- Beginning: merge Consecutives ----
+    //      --- Beginning: merge consecutive number strings ----
+    // For example array is ['1','3','+','1','-','2','.','8']
+    // passed to joinNumberValues(arr)
+    // will yield mergedArray ['13','+','1','-','2.8']
 
     function countTheOperators(arr) {
         const opCount = arr.filter(x => OPERATOR_VALUES.includes(x)).length
@@ -25,7 +16,9 @@ function calculateFinalValue(inputArray) {
         for (let i = 0; i < arr.length; i++) {
             const currentValue = arr[i]
             const nextValue = arr[i + 1]
-            function spliceConsecutives(arr) { return arr.splice(i, 2, currentValue + nextValue) }  // Concatenate consecutive number strings
+            function spliceConsecutives(arr) {
+                return arr.splice(i, 2, currentValue + nextValue)
+            }  // Concatenate consecutive number strings
 
             if (!isOperator(currentValue) && !isOperator(nextValue)) {
                 arr = spliceConsecutives(arr)
@@ -34,20 +27,18 @@ function calculateFinalValue(inputArray) {
     }
 
     function joinNumberValues(arr) {
-        while (arr.length > ((2 * operatorCount) + 1)) { mergeConsecutiveValues(arr) }
+        while (arr.length > ((2 * operatorCount) + 1)) {
+            mergeConsecutiveValues(arr)
+        }
         return arr
     }
 
-    //      --- End: merge Consecutives
-
+    //      --- End: merge consecutive number values ---
 
     const mergedArray = joinNumberValues(inputArray)
+    // console.log('mergedArray is: ' + mergedArray)
 
-    console.log(mergedArray)
-
-    // function checkArrayForOperator(val) {
-    //     return isOperator(val)
-    // }
+    // At this point I have a mergedArray in the format [numstring,op,numstring,op,numstring,op,...numstring]
 
     function calculate(leftValue, operator, rightValue) {
         const leftNumber = parseFloat(leftValue)
@@ -72,12 +63,119 @@ function calculateFinalValue(inputArray) {
         return calculatedNumber.toString()
     }
 
-    // iterate through array
+    // iterate through mergedArray
     // check for operators. while operators exist in the array,
-    // send the array to the calculation function, a switch statement
-    // that takes two number strings and an operator
+    // send the array to the calculate function, a switch statement
+    // that takes two number strings and an operator. It returns a number string.
+    // This number string is then spliced back into the mergedArray
 
+    function isMoreThanOneValue(arr) {
+        return arr.length > 1
+    }
 
+    function isMultiplyOrDivide(val) {
+        return val === '*' || val === '/'
+    }
 
+    function isAddOrSubtract(val) {
+        return val === '+' || val === '-'
+    }
+
+    function reduceToSingleValue(arr) {
+
+        function sendNumbersEitherSideToCalculation(operator, operatorPosition) {
+            const numberLeftOfOperator = arr[operatorPosition - 1]
+            const numberRightOfOperator = arr[operatorPosition + 1]
+            const calculatedPiece = calculate(numberLeftOfOperator, operator, numberRightOfOperator)
+            const splicedArray = arr.splice(operatorPosition - 1, 3, calculatedPiece)
+
+            return splicedArray
+        }
+
+        function processOperatorsInCorrectOrder(arr) {
+            for (let i = 0; i < arr.length; i++) {
+                const currentValue = arr[i]
+                if (isMultiplyOrDivide(currentValue)) {
+                    arr = sendNumbersEitherSideToCalculation(currentValue, i)
+                }
+                if (isAddOrSubtract(currentValue)) {
+                    arr = sendNumbersEitherSideToCalculation(currentValue, i)
+                }
+            }
+            return arr
+        }
+
+        while (isMoreThanOneValue(arr)) {
+            processOperatorsInCorrectOrder(arr)
+        }
+
+        return arr
+    }
+
+    const arrayOfSingleValue = reduceToSingleValue(mergedArray)
+    console.log(arrayOfSingleValue)
 
 }
+
+
+    //  while (arr.includes('/')) {
+        //         arr = sendNumbersEitherSideToCalculation('/')
+        //     }
+        //     while (arr.includes('*')) {
+            //         arr = sendNumbersEitherSideToCalculation('*')
+            //     }
+            //     while (arr.includes('+')) {
+                //         arr = sendNumbersEitherSideToCalculation('+')
+                //     }
+                //     while (arr.includes('-')) {
+                    //         arr = sendNumbersEitherSideToCalculation('-')
+                    //     }
+
+                    //     function checkWhichAppearsEarlier()
+                    //     if (positionOfMultiply > positionOfDivide) {
+                        //         return 'multiplyAppearsEarlier'
+                        //     } else { return 'divideAppearsEarlier' }
+                        // }
+
+                        // if (checkWhichAppearsEarlier() === 'multiplyAppearsEarlier')
+                        //           arr = sendNumbersEitherSideToCalculation('/')
+                        //             arr = sendNumbersEitherSideToCalculation('*')
+                        //         }
+                        //         while (arr.includes('+') || arr.includes('-')) {
+                            //             arr = sendNumbersEitherSideToCalculation('+')
+                            //             arr = sendNumbersEitherSideToCalculation('-')
+                            //         }
+
+                            //         return arr
+
+
+
+
+                                //CAN TRIM THIS DOWN.
+
+                                //     while (arr.includes('/')) {
+                                //         if (arr.includes('*')) {
+
+                                //             const positionOfMultiply = arr.indexOf('*')
+                                //             const positionOfDivide = arr.indexOf('/')
+
+                                //             if (positionOfMultiply < positionOfDivide) {
+                                //                 arr = sendNumbersEitherSideToCalculation('*')
+                                //             } else { arr = sendNumbersEitherSideToCalculation('/') }
+
+                                //         } else { arr = sendNumbersEitherSideToCalculation('/') }
+                                //     }
+
+                                //     while (arr.includes('+')) {
+                                //         if (arr.includes('-')) {
+
+                                //             const positionOfPlus = arr.indexOf('+')
+                                //             const positionOfMinus = arr.indexOf('-')
+
+                                //             if (positionOfPlus < positionOfMinus) {
+                                //                 arr = sendNumbersEitherSideToCalculation('+')
+                                //             } else { arr = sendNumbersEitherSideToCalculation('-') }
+
+                                //         } else { arr = sendNumbersEitherSideToCalculation('+') }
+                                //     }
+                                // }
