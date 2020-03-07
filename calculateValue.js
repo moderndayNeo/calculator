@@ -70,8 +70,6 @@ function mergeAnyConsecutiveNumbers(arr) {
 }
 
 
-
-
 function calculateFinalValue(inputArray) {
 
     //      --- Beginning: merge consecutive number strings ----
