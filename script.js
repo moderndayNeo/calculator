@@ -110,16 +110,17 @@ function buildArrayFromStringCharacters(stringValue) {
 // const arr2 = ['8', '5', '+', '1', '7', '.', '4', '/', '2', '.', '5', '*', '8', '7', '1', '5', '9']
 
 function evaluateInputAndDisplay() {
-    const stringToBeCalculated = convertArrayToString(userInput)
-    const rawCalculatedValue = performEvaluation(stringToBeCalculated);
+    // const stringToBeCalculated = convertArrayToString(userInput)
+    // const rawCalculatedValue = performEvaluation(stringToBeCalculated);
 
-    const shortenedCalculatedValue = checkLastFourDigits(rawCalculatedValue);
-    setDisplay(shortenedCalculatedValue);
+    // const shortenedCalculatedValue = checkLastFourDigits(rawCalculatedValue);
+    // setDisplay(shortenedCalculatedValue);
 
-    const calculatedValueToString = shortenedCalculatedValue.toString()
+    // const calculatedValueToString = shortenedCalculatedValue.toString()
     // userInput = buildArrayFromStringCharacters(calculatedValueToString)
     // console.log(userInput)
-    calculateFinalValue(userInput)
+    const result = calculateFinalValue(userInput)
+    setDisplay(result)
     
 }
 
@@ -189,5 +190,9 @@ equals.addEventListener('click', evaluateInputAndDisplay)
 
     function stripWhitespace(str) {
     return str.trim()
+
+Notes: convertArrayToString can be changed to a simple array.join('') method
+
+
 
     */

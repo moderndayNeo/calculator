@@ -45,10 +45,6 @@ function isANumberOrDecimal(val) {
     return NUMBERS_AND_DECIMAL.includes(val)
 }
 
-function emptyTheString(str) {
-    return str = ''
-}
-
 function mergeAnyConsecutiveNumbers(arr) {
     let holdingValue = ''
     const arrayWithNumbersConcatenated = []
@@ -61,7 +57,7 @@ function mergeAnyConsecutiveNumbers(arr) {
         } else {
             arrayWithNumbersConcatenated.push(holdingValue)
             arrayWithNumbersConcatenated.push(currentArrayValue)
-            emptyTheString(holdingValue)
+            holdingValue = ''
         }
     }
     arrayWithNumbersConcatenated.push(holdingValue)
@@ -70,64 +66,24 @@ function mergeAnyConsecutiveNumbers(arr) {
 }
 
 
+
 function calculateFinalValue(inputArray) {
 
-    //      --- Beginning: merge consecutive number strings ----
-    // For example array is ['1','3','+','1','-','2','.','8']
-    // passed to joinNumberValues(arr)
-    // will yield mergedArray ['13','+','1','-','2.8']
+    const equation = mergeAnyConsecutiveNumbers(inputArray)
 
+    const chunkToCalculate = equation.slice(0,3)
+    const restOfEquation = equation.slice(3)
 
-    const mergedArray = mergeAnyConsecutiveNumbers(inputArray)
-    console.log(mergedArray)
+    const result = calculate(...chunkToCalculate)
 
-    const operatorCount = countTheOperators(inputArray)
-
-    //      --- End: merge consecutive number values ---
-
-    // At this point I have a mergedArray in the format [numstring,op,numstring,op,numstring,op,...numstring]
-
-    // iterate through mergedArray
-    // check for operators. while operators exist in the array,
-    // send the array to the calculate function, a switch statement
-    // that takes two number strings and an operator. It returns a number string.
-    // This number string is then spliced back into the mergedArray
-
-
-    function reduceToSingleValue(arr) {
-
-        function sendNumbersEitherSideToCalculation(operator, operatorPosition) {
-            const numberLeftOfOperator = arr[operatorPosition - 1]
-            const numberRightOfOperator = arr[operatorPosition + 1]
-            const calculatedPiece = calculate(numberLeftOfOperator, operator, numberRightOfOperator)
-            const splicedArray = arr.splice(operatorPosition - 1, 3, calculatedPiece)
-
-            return splicedArray
-        }
-
-        function processOperatorsInCorrectOrder(arr) {
-            for (let i = 0; i < arr.length; i++) {
-                const currentValue = arr[i]
-                if (isMultiplyOrDivide(currentValue)) {
-                    arr = sendNumbersEitherSideToCalculation(currentValue, i)
-                }
-                if (isAddOrSubtract(currentValue)) {
-                    arr = sendNumbersEitherSideToCalculation(currentValue, i)
-                }
-            }
-            return arr
-        }
-
-        while (isMoreThanOneValue(arr)) {
-            processOperatorsInCorrectOrder(arr)
-        }
-
-        return arr
+    if (restOfEquation.length === 0) {
+        return result
     }
 
-    const arrayOfSingleValue = reduceToSingleValue(mergedArray)
-    console.log(arrayOfSingleValue)
+    const toBeCalculated = [result, ...restOfEquation]
 
+    return calculateFinalValue(toBeCalculated)
+    
 }
 
 
@@ -137,6 +93,14 @@ function calculateFinalValue(inputArray) {
 
 
 /*
+ // iterate through mergedArray
+    // check for operators. while operators exist in the array,
+    // send the array to the calculate function, a switch statement
+    // that takes two number strings and an operator. It returns a number string.
+    // This number string is then spliced back into the mergedArray
+
+
+
 //  while (arr.includes('/')) {
 //         arr = sendNumbersEitherSideToCalculation('/')
 //     }
@@ -151,7 +115,7 @@ function calculateFinalValue(inputArray) {
 //     }
 
 //     function checkWhichAppearsEarlier()
-//     if (positionOfMultiply > positionOfDivide) {
+    // if (positionOfMultiply > positionOfDivide) {
 //         return 'multiplyAppearsEarlier'
 //     } else { return 'divideAppearsEarlier' }
 // }
@@ -222,4 +186,57 @@ return arr
 }
 const mergedArray = joinNumberValues(inputArray)
 
+    // const operatorCount = countTheOperators(inputArray)
+
+        //      --- Beginning: merge consecutive number strings ----
+    // For example array is ['1','3','+','1','-','2','.','8']
+    // passed to mergeAnyConsecutiveNumbers(arr)
+    // will yield mergedArray ['13','+','1','-','2.8']
+    //      --- End: merge consecutive number values ---
+    // At this point I have a mergedArray in the format [numstring,op,numstring,op,numstring,op,...numstring]
+
+
+
+
+
+    // function calculateFinalValue(inputArray) {
+
+//         const mergedArray = mergeAnyConsecutiveNumbers(inputArray)
+//         console.log(mergedArray)
+    
+//     function reduceToSingleValue(arr) {
+
+//         function sendNumbersEitherSideToCalculation(operator, operatorPosition) {
+//             const numberLeftOfOperator = arr[operatorPosition - 1]
+//             const numberRightOfOperator = arr[operatorPosition + 1]
+//             const calculatedPiece = calculate(numberLeftOfOperator, operator, numberRightOfOperator)
+
+
+//             // const splicedArray = arr.splice(operatorPosition - 1, 3, calculatedPiece)
+//             // return splicedArray
+//         }
+
+//         function processOperatorsInCorrectOrder(arr) {
+//             for (let i = 0; i < arr.length; i++) {
+//                 const currentValue = arr[i]
+//                 if (isMultiplyOrDivide(currentValue)) {
+//                     arr = sendNumbersEitherSideToCalculation(currentValue, i)
+//                 }
+//                 if (isAddOrSubtract(currentValue)) {
+//                     arr = sendNumbersEitherSideToCalculation(currentValue, i)
+//                 }
+//             }
+//             return arr
+//         }
+
+//         while (isMoreThanOneValue(arr)) {
+//             processOperatorsInCorrectOrder(arr)
+//         }
+
+//         return arr
+//     }
+    
+//         const arrayOfSingleValue = reduceToSingleValue(mergedArray)
+//         console.log(arrayOfSingleValue)
+//     }
 */
