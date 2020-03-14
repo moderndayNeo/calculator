@@ -71,10 +71,6 @@ for (const value of operators) {
     value.addEventListener('click', collectInputAndDisplay)
 }
 
-function emptyTheString(str) {
-    return str = ''
-}
-
 // Click the 'C' (Clear) button, return to an empty screen
 clear.addEventListener('click', function () {
     userInput = []
@@ -92,7 +88,6 @@ function removeLastTypedCharacter() {
 }
 
 deleteBtn.addEventListener('click', removeLastTypedCharacter)
-
 
 function checkLastFourDigits(num) {
     return num === parseInt(num) ? num : num.toFixed(4);
@@ -125,6 +120,11 @@ function evaluateInputAndDisplay() {
     setDisplay(result)
     
 }
+
+
+// eventually array has one value
+// send the one value to userInput. Break up the characters
+// set display, user input
 
 // Click the equals button, evaluate the string
 equals.addEventListener('click', evaluateInputAndDisplay)

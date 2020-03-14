@@ -1,3 +1,5 @@
+const NUMBERS_AND_DECIMAL = "0123456789.";
+
 function countTheOperators(arr) {
   const opCount = arr.filter(x => OPERATOR_VALUES.includes(x)).length;
   return opCount;
@@ -37,8 +39,6 @@ function isMultiplyOrDivide(val) {
 function isAddOrSubtract(val) {
   return val === "+" || val === "-";
 }
-
-const NUMBERS_AND_DECIMAL = "0123456789.";
 
 function isANumberOrDecimal(val) {
   return NUMBERS_AND_DECIMAL.includes(val);
@@ -110,24 +110,10 @@ function processAddAndSubtract(equation) {
   return processAddAndSubtract(addAndSubtractProcessed);
 }
 
-
-const arr4 = ["5", "*", "8", "/", "6"];
-const arr5 = ["5", "+", "6",'*','79','-','7','/','8'];
-const arr3 = ["12", "/", "5", "*", "7", "-", "2", "*", "4", "/", "2"];
-
-const arr6 = processMultiplyAndDivide(arr5)
-const arr7 = processAddAndSubtract(arr6)
-// console.log(arr7);
-
-
-function calculateFinalValue(inputArray) {
-    // eventually array has one value
-    // send the one value to userInput. Break up the characters
-    // set display, user input
-    const equation = mergeAnyConsecutiveNumbers(inputArray);
+function calculateFinalValue(array) {
+    const equation = mergeAnyConsecutiveNumbers(array);
     const mulsDivsProcessed = processMultiplyAndDivide(equation);
     const calculatedResult = processAddAndSubtract(mulsDivsProcessed);
-    // console.log(calculatedResult)
     
-  return calculatedResult;
+    return calculatedResult;
 }
