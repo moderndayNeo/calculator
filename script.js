@@ -120,6 +120,8 @@ function evaluateInputAndDisplay() {
     // userInput = buildArrayFromStringCharacters(calculatedValueToString)
     // console.log(userInput)
     const result = calculateFinalValue(userInput)
+// returns array
+
     setDisplay(result)
     
 }
