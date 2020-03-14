@@ -3,16 +3,17 @@ const deleteBtn = document.getElementById('delete');
 const equals = document.getElementById('equals');
 const multiply = document.getElementById('multiply');
 const divide = document.getElementById('divide');
+const numbersAndDecimal = document.getElementsByClassName('numbersAndDecimal');
+const operators = document.getElementsByClassName('operator');
+const OPERATOR_VALUES = '+-/*'
+
+let userInput = [];
 
 // Screen output is an array to be calculated when the user presses 'equals'
 // On clicking a button, the button's value e.g. '1','7','+' is sent to the array
 // I have applied the classes '.numbersAndDecimal' and '.operators' to values that add to the array.
 //  This is all buttons besides Clear, Delete and Equals.
-const numbersAndDecimal = document.getElementsByClassName('numbersAndDecimal');
-const operators = document.getElementsByClassName('operator');
 
-const OPERATOR_VALUES = '+-/*'
-let userInput = [];
 
 function convertArrayToString(arr) {
     let str = '';
@@ -59,9 +60,7 @@ function collectInputAndDisplay(event) {
     }
     const displayString = convertArrayToString(userInput)
     setDisplay(displayString)
-    // console.log('userInput after button press is: ' + userInput)
 }
-
 
 for (const value of numbersAndDecimal) {
     value.addEventListener('click', collectInputAndDisplay)
@@ -89,112 +88,53 @@ function removeLastTypedCharacter() {
 
 deleteBtn.addEventListener('click', removeLastTypedCharacter)
 
-function checkLastFourDigits(num) {
-    return num === parseInt(num) ? num : num.toFixed(4);
+function checkLastFourDigits(str) {
+    const decimalPosition = str.indexOf('.')
+    const valuesAfterDecimal = str.substring(decimalPosition + 1)
+    
+    if(valuesAfterDecimal.length <= 4) {
+        return str
+    } return str.slice(0, decimalPosition + 5)
 }
 
-function performEvaluation(valueToEvaluate) {
-    return eval(valueToEvaluate);
+function hasDecimal(str) {
+    return str.includes('.')
 }
 
-function buildArrayFromStringCharacters(stringValue) {
-    return stringValue.split('')
+function shortenLongNumbers(num) {
+    const str = num.toString()
+
+    return !hasDecimal(str) ?
+        str :
+        checkLastFourDigits(str)
 }
 
-// const myArr = ['6', '-', '1', '3', '.', '2', '+', '5']
+
 // const arr2 = ['8', '5', '+', '1', '7', '.', '4', '/', '2', '.', '5', '*', '8', '7', '1', '5', '9']
 
 function evaluateInputAndDisplay() {
-    // const stringToBeCalculated = convertArrayToString(userInput)
-    // const rawCalculatedValue = performEvaluation(stringToBeCalculated);
+    console.log(`userInput is ${userInput}`)
 
-    // const shortenedCalculatedValue = checkLastFourDigits(rawCalculatedValue);
-    // setDisplay(shortenedCalculatedValue);
+    const rawCalculatedValue = calculateFinalValue(userInput)
+    console.log(`rawCalculatedValue is ${rawCalculatedValue}`)
 
-    // const calculatedValueToString = shortenedCalculatedValue.toString()
-    // userInput = buildArrayFromStringCharacters(calculatedValueToString)
-    // console.log(userInput)
-    const result = calculateFinalValue(userInput)
-// returns array
+    const shortenedCalculatedValue = shortenLongNumbers(rawCalculatedValue);
 
-    setDisplay(result)
-    
+    console.log(`shortenedCalculatedValue is ${shortenedCalculatedValue}`)
+
+    userInput = shortenedCalculatedValue.split('')
+    console.log(`userInput is ${userInput}`)
+
+    setDisplay(shortenedCalculatedValue);
 }
-
-
-// eventually array has one value
-// send the one value to userInput. Break up the characters
-// set display, user input
 
 // Click the equals button, evaluate the string
 equals.addEventListener('click', evaluateInputAndDisplay)
 
 
-    /*
-    // Declaring constants for all buttons
-    const one = document.getElementById('one');
-    const two = document.getElementById('two');
-    const three = document.getElementById('three');
-    const four = document.getElementById('four');
-    const five = document.getElementById('five');
-    const six = document.getElementById('six');
-    const seven = document.getElementById('seven');
-    const eight = document.getElementById('eight');
-    const nine = document.getElementById('nine');
-    const zero = document.getElementById('zero');
-    const decimal = document.getElementById('decimal');
-    
-    const clear = document.getElementById('clear');
-    const add = document.getElementById('add');
-    const subtract = document.getElementById('subtract');
-    
-    // const userInput = [];
-
-    
-    // const multiplyRegex = /x/g;
-    // output.innerHTML = output.innerHTML.replace(multiplyRegex, '*');
-    //const divideRegex = /÷/g;
-    //const divideRegex = /&divide;/g;
-    
-    if str ends in one or more zeros, remove the zeros
-    return /0+$/g.test(str) ? str.replace(0, '') : str.toFixed(4);
-    
-    function checkLastFourDigits(str) {
-           return eval(str) === parseInt(eval(str)) ? eval(str) : (eval(str)).toFixed(4);
-               // If the output is an integer, remove the unneccessary four zeros. Else,
-               // return the floating point number to 4 decimal places.
-       }
-       function checkLastFourDigits(num) {
-       // If str ends in one or more zeros, remove the zeros.
-        return /0+$/g.test(num) ? num.replace(0, '') : num.toFixed(4);
-    }
-    
-    const displayWidth = document.getElementById('display').scrollWidth;
-    const outputWidth = output.scrollWidth;
-    output.innerHTML.width < display.length
-    // Output overflows if too many numbers are typed. Set a max length for the output string
-    // If string.length is greater than 20, throw an error or return
-         //   if (output.innerHTML.length < 15) { //Prevent display overflow. Substitute this for a proper width value
-          //  } return;
-    
-          //const checkForoperators = /[+-/*]\s$/g; // Check if the last value entered was an operators
-    //const checkForMultiplyOrDivide = /\*|\//g;  // Check if the value entered is 'multiply' or 'divide'
-    
-    function emptyTheArray(arr) {
-        while (arr.length > 0) {
-            arr.pop()
-        }
-    }
-    
-    Default state for the screen : displayZero.
-    displayZero is displayed when the user first loads the calculator, and when the user
-    clicks Clear.
-
-    function stripWhitespace(str) {
-    return str.trim()
-
+/*
+Default state for the screen : displayZero.
+displayZero is displayed when the user first loads the calculator,
+and when the user clicks Clear.
 Notes: convertArrayToString can be changed to a simple array.join('') method
-
-
-
-    */
+*/

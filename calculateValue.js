@@ -73,6 +73,11 @@ function containsAddOrSub(arr) {
 }
 
 function processMultiplyAndDivide(equation) {
+
+    if (!containsMulOrDiv(equation)) {
+      return equation;
+    }
+
   const positionFirstMulOrDiv = equation.findIndex(isMultiplyOrDivide);
   const leftOfOperator = positionFirstMulOrDiv - 1;
   const rightOfOperator = positionFirstMulOrDiv + 1;
@@ -84,15 +89,17 @@ function processMultiplyAndDivide(equation) {
 
   const mulAndDivProcessed = [...leftOfChunk, result, ...rightOfChunk];
 
-  if (!containsMulOrDiv(mulAndDivProcessed)) {
-    return mulAndDivProcessed;
-  }
 
   return processMultiplyAndDivide(mulAndDivProcessed);
 }
 
 function processAddAndSubtract(equation) {
-  const positionFirstAddOrSub = equation.findIndex(isAddOrSubtract);
+   
+    if (!containsAddOrSub(equation)) {
+      return equation;
+    }
+
+    const positionFirstAddOrSub = equation.findIndex(isAddOrSubtract);
   const leftOfOperator = positionFirstAddOrSub - 1;
   const rightOfOperator = positionFirstAddOrSub + 1;
 
@@ -102,10 +109,6 @@ function processAddAndSubtract(equation) {
   const rightOfChunk = equation.slice(rightOfOperator + 1, equation.length);
 
   const addAndSubtractProcessed = [...leftOfChunk, result, ...rightOfChunk];
-
-  if (!containsAddOrSub(addAndSubtractProcessed)) {
-    return addAndSubtractProcessed;
-  }
 
   return processAddAndSubtract(addAndSubtractProcessed);
 }
