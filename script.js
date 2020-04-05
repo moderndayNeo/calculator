@@ -4,7 +4,8 @@ const equals = document.getElementById('equals');
 const numbersAndDecimal = document.getElementsByClassName('numbersAndDecimal');
 const operators = document.getElementsByClassName('operator');
 const OPERATOR_VALUES = '+-/*'
-let userInput = [];
+let userInput = ['0'];
+setDisplay('0')
 
 for (const value of numbersAndDecimal) {
     value.addEventListener('click', collectInputAndDisplay)
@@ -16,8 +17,8 @@ for (const value of operators) {
 
 deleteBtn.addEventListener('click', removeLastTypedCharacter)
 clear.addEventListener('click', function () {
-    userInput = []
-    setDisplay('')
+    userInput = ['0']
+    setDisplay('0')
 });
 equals.addEventListener('click', evaluateInputAndDisplay)
 
@@ -127,4 +128,7 @@ If user presses a number, then remove the zero and append the number
 User presses a number between 1-9?
     Remove 0, append number to string :
     append value ()
+
+ Test -3.8-4 doesn't work.
+ In mergeAnyConsecutiveNumbers
 */
