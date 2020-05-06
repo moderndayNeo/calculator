@@ -81,14 +81,18 @@ function removeLastFromString(str) {
     return str.slice(0, -1)
 }
 
+const displayZero = () => {
+    userInput[0] = '0';
+    setDisplay('0')
+}
+
 function removeLastTypedCharacter() {
 
     if (userInput.length === 1) {
         if (userInput[0] === '0') {
             return
         } else {
-            userInput[0] === '0'
-            return setDisplay('0')
+            return displayZero()
         }
     }
 
