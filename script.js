@@ -65,24 +65,17 @@ function isInputValid(desiredValue) {
     return true
 }
 
-// const screenDisplaysZero = () => {
-//     return (userInput.length = 1 && userInput[0] === '0')
-// }
+const screenDisplaysZero = () => output.innerHTML === '0'
 
 function collectInputAndDisplay(event) {
     const value = event.target.innerHTML
 
-    // if (screenDisplaysZero() && typeof value === 'number') {
-    //     userInput[0] = value
-    // }
-
-    // if (the screen shows 0 and the user has entered a number) {
-    //     remove the zero and put the number instead
-    // }
-
-    if (isInputValid(value)) {
+    if (screenDisplaysZero() && typeof parseInt(value) === 'number') {
+        userInput[0] = value
+    } else if (isInputValid(value)) {
         pushToUserInput(value)
     }
+
     const displayString = convertArrayToString(userInput)
     // better to use userInput.join('')
     setDisplay(displayString)
@@ -93,8 +86,14 @@ function removeLastFromString(str) {
 }
 
 function removeLastTypedCharacter() {
-    if (userInput.length === 1 && userInput[0] === '0') {
-        return
+
+    if (userInput.length === 1) {
+        if (userInput[0] === '0') {
+            return
+        } else {
+            userInput[0] === '0'
+            return setDisplay('0')
+        }
     }
 
     userInput.pop()
@@ -141,6 +140,7 @@ and when the user clicks Clear.
 Set userInput as ['0']. If user presses an operator, then append to the string
 If user presses a decimal, append to string
 If user presses a number, then remove the zero and append the number
+
 
 User presses a number between 1-9?
     Remove 0, append number to string :
