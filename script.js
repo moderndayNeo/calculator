@@ -1,10 +1,10 @@
-const output = document.getElementById('output');
-const deleteBtn = document.getElementById('delete');
-const equals = document.getElementById('equals');
-const numbersAndDecimal = document.getElementsByClassName('numbersAndDecimal');
-const operators = document.getElementsByClassName('operator');
+const output = document.getElementById('output')
+const deleteBtn = document.getElementById('delete')
+const equals = document.getElementById('equals')
+const numbersAndDecimal = document.getElementsByClassName('numbersAndDecimal')
+const operators = document.getElementsByClassName('operator')
 const OPERATOR_VALUES = '+-/*'
-let userInput = ['0'];
+let userInput = ['0']
 setDisplay('0')
 
 for (const value of numbersAndDecimal) {
@@ -19,7 +19,7 @@ deleteBtn.addEventListener('click', removeLastTypedCharacter)
 clear.addEventListener('click', function () {
     userInput = ['0']
     setDisplay('0')
-});
+})
 equals.addEventListener('click', evaluateInputAndDisplay)
 
 // Screen output is an array to be calculated when the user presses 'equals'
@@ -36,7 +36,7 @@ function setDisplay(str) {
 }
 
 function pushToUserInput(value) {
-    userInput.push(value);
+    userInput.push(value)
 }
 
 function isOperator(val) {
@@ -49,7 +49,7 @@ function getLastValue(arr) {
 
 function isInputValid(desiredValue) {
     const lastValue = getLastValue(userInput)
-    
+
     if (lastValue === '.' && desiredValue === '.') {
         return false
     }
@@ -65,12 +65,26 @@ function isInputValid(desiredValue) {
     return true
 }
 
+// const screenDisplaysZero = () => {
+//     return (userInput.length = 1 && userInput[0] === '0')
+// }
+
 function collectInputAndDisplay(event) {
     const value = event.target.innerHTML
+
+    // if (screenDisplaysZero() && typeof value === 'number') {
+    //     userInput[0] = value
+    // }
+
+    // if (the screen shows 0 and the user has entered a number) {
+    //     remove the zero and put the number instead
+    // }
+
     if (isInputValid(value)) {
         pushToUserInput(value)
     }
     const displayString = convertArrayToString(userInput)
+    // better to use userInput.join('')
     setDisplay(displayString)
 }
 
@@ -79,6 +93,10 @@ function removeLastFromString(str) {
 }
 
 function removeLastTypedCharacter() {
+    if (userInput.length === 1 && userInput[0] === '0') {
+        return
+    }
+
     userInput.pop()
     const displayStringLessLastChar = convertArrayToString(userInput)
     setDisplay(displayStringLessLastChar)
@@ -87,10 +105,11 @@ function removeLastTypedCharacter() {
 function checkLastFourDigits(str) {
     const decimalPosition = str.indexOf('.')
     const valuesAfterDecimal = str.substring(decimalPosition + 1)
-    
-    if(valuesAfterDecimal.length <= 4) {
+
+    if (valuesAfterDecimal.length <= 4) {
         return str
-    } return str.slice(0, decimalPosition + 5)
+    }
+    return str.slice(0, decimalPosition + 5)
 }
 
 function hasDecimal(str) {
@@ -100,20 +119,18 @@ function hasDecimal(str) {
 function shortenLongNumbers(num) {
     const str = num.toString()
 
-    return !hasDecimal(str) ?
-        str :
-        checkLastFourDigits(str)
+    return !hasDecimal(str) ? str : checkLastFourDigits(str)
 }
 
 function evaluateInputAndDisplay() {
     console.log(`userInput is ${userInput}`)
     const rawCalculatedValue = calculateFinalValue(userInput)
     console.log(`rawCalculatedValue is ${rawCalculatedValue}`)
-    const shortenedCalculatedValue = shortenLongNumbers(rawCalculatedValue);
+    const shortenedCalculatedValue = shortenLongNumbers(rawCalculatedValue)
     console.log(`shortenedCalculatedValue is ${shortenedCalculatedValue}`)
     userInput = shortenedCalculatedValue.split('')
     console.log(`userInput is ${userInput}`)
-    setDisplay(shortenedCalculatedValue);
+    setDisplay(shortenedCalculatedValue)
 }
 
 /*
@@ -131,4 +148,7 @@ User presses a number between 1-9?
 
  Test -3.8-4 doesn't work.
  In mergeAnyConsecutiveNumbers
+
+ Press operator then equals leads to NaN
+
 */
