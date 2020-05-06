@@ -27,9 +27,6 @@ equals.addEventListener('click', evaluateInputAndDisplay)
 // I have applied classes 'numbersAndDecimal' and 'operators' to values that add to the array.
 //  This is all buttons besides Clear, Delete and Equals.
 
-function convertArrayToString(arr) {
-    return arr.join('')
-}
 
 function setDisplay(str) {
     output.innerHTML = str
@@ -76,8 +73,7 @@ function collectInputAndDisplay(event) {
         pushToUserInput(value)
     }
 
-    const displayString = convertArrayToString(userInput)
-    // better to use userInput.join('')
+    const displayString = userInput.join('')
     setDisplay(displayString)
 }
 
@@ -97,7 +93,7 @@ function removeLastTypedCharacter() {
     }
 
     userInput.pop()
-    const displayStringLessLastChar = convertArrayToString(userInput)
+    const displayStringLessLastChar = userInput.join('')
     setDisplay(displayStringLessLastChar)
 }
 
