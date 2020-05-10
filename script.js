@@ -3,7 +3,9 @@ const deleteBtn = document.getElementById('delete')
 const equals = document.getElementById('equals')
 const numbersAndDecimal = document.getElementsByClassName('numbersAndDecimal')
 const operators = document.getElementsByClassName('operator')
+
 const OPERATOR_VALUES = '+-/*'
+
 let userInput = ['0']
 setDisplay('0')
 
@@ -16,17 +18,18 @@ for (const value of operators) {
 }
 
 deleteBtn.addEventListener('click', removeLastTypedCharacter)
+
 clear.addEventListener('click', function () {
     userInput = ['0']
     setDisplay('0')
 })
+
 equals.addEventListener('click', evaluateInputAndDisplay)
 
 // Screen output is an array to be calculated when the user presses 'equals'
 // On clicking a button, the button's value e.g. '1','7','+' is sent to the array
 // I have applied classes 'numbersAndDecimal' and 'operators' to values that add to the array.
 //  This is all buttons besides Clear, Delete and Equals.
-
 
 function setDisplay(str) {
     output.innerHTML = str
@@ -82,14 +85,13 @@ function removeLastFromString(str) {
 }
 
 const displayZero = () => {
-    userInput[0] = '0';
+    userInput = '0'
     setDisplay('0')
 }
 
 function removeLastTypedCharacter() {
-
     if (userInput.length === 1) {
-        if (userInput[0] === '0') {
+        if (userInput === ['0']) {
             return
         } else {
             return displayZero()
