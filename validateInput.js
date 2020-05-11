@@ -11,9 +11,9 @@ function pushToUserInput(value) {
     userInput.push(value)
 }
 
-function isOperator(val) {
-    return OPERATOR_VALUES.includes(val)
-}
+// function isOperator(val) {
+//     return OPERATOR_VALUES.includes(val)
+// }
 
 function getLastValue(arr) {
     return arr.length > 0 ? arr[arr.length - 1] : undefined
@@ -52,9 +52,27 @@ function collectInputAndDisplay(event) {
     setDisplay(displayString)
 }
 
-function removeLastFromString(str) {
+// function removeLastFromString(str) {
+//     return str.slice(0, -1)
+// }
+
+const isOperator = (val) => {
+    const OPERATOR_VALUES = '+-/*'
+    return OPERATOR_VALUES.includes(val)
+}
+
+const removeLastFromString = (str) => {
     return str.slice(0, -1)
 }
+
+module.exports = { removeLastFromString, isOperator }
+
+
+
+
+
+
+
 
 function removeLastTypedCharacter() {
     if (userInput.length === 1) {
