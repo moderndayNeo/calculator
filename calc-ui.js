@@ -4,8 +4,7 @@ const equals = document.getElementById('equals')
 const numbersAndDecimal = document.getElementsByClassName('numbersAndDecimal')
 const operators = document.getElementsByClassName('operator')
 
-let userInput = ['0']
-setDisplay('0')
+defaultToZero()
 
 for (const value of numbersAndDecimal) {
     value.addEventListener('click', collectInputAndDisplay)
