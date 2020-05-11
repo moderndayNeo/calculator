@@ -113,10 +113,6 @@ function checkLastFourDigits(str) {
     return str.slice(0, decimalPosition + 5)
 }
 
-function hasDecimal(str) {
-    return str.includes('.')
-}
-
 function shortenLongNumbers(num) {
     const str = num.toString()
 
