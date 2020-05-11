@@ -4,8 +4,6 @@ const equals = document.getElementById('equals')
 const numbersAndDecimal = document.getElementsByClassName('numbersAndDecimal')
 const operators = document.getElementsByClassName('operator')
 
-const OPERATOR_VALUES = '+-/*'
-
 let userInput = ['0']
 setDisplay('0')
 
