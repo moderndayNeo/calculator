@@ -1,4 +1,3 @@
-const NUMBERS_AND_DECIMAL = '0123456789.'
 
 function countTheOperators(arr) {
     const opCount = arr.filter((x) => OPERATOR_VALUES.includes(x)).length
@@ -28,22 +27,6 @@ function calculate(leftValue, operator, rightValue) {
     return calculatedNumber.toString()
 }
 
-function isMoreThanOneValue(arr) {
-    return arr.length > 1
-}
-
-function isMultiplyOrDivide(val) {
-    return val === '*' || val === '/'
-}
-
-function isAddOrSubtract(val) {
-    return val === '+' || val === '-'
-}
-
-function isANumberOrDecimal(val) {
-    return NUMBERS_AND_DECIMAL.includes(val)
-}
-
 function mergeAnyConsecutiveNumbers(arr) {
     let holdingValue = ''
     const arrayWithNumbersConcatenated = []
@@ -62,14 +45,6 @@ function mergeAnyConsecutiveNumbers(arr) {
     arrayWithNumbersConcatenated.push(holdingValue)
 
     return arrayWithNumbersConcatenated
-}
-
-function containsMulOrDiv(arr) {
-    return arr.includes('*') || arr.includes('/')
-}
-
-function containsAddOrSub(arr) {
-    return arr.includes('+') || arr.includes('-')
 }
 
 function processMultiplyAndDivide(equation) {
