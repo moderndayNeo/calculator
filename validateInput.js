@@ -2,7 +2,7 @@ function setDisplay(str) {
     output.innerHTML = str
 }
 
-function defaultToZero() {
+function displayZero() {
     userInput = ['0']
     setDisplay('0')
 }
@@ -61,7 +61,7 @@ function removeLastTypedCharacter() {
         if (userInput === ['0']) {
             return
         } else {
-            return defaultToZero()
+            return displayZero()
         }
     }
 

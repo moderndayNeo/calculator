@@ -1,10 +1,11 @@
 const output = document.getElementById('output')
 const deleteBtn = document.getElementById('delete')
+const clear = document.getElementById('clear')
 const equals = document.getElementById('equals')
 const numbersAndDecimal = document.getElementsByClassName('numbersAndDecimal')
 const operators = document.getElementsByClassName('operator')
 
-defaultToZero()
+displayZero()
 
 for (const value of numbersAndDecimal) {
     value.addEventListener('click', collectInputAndDisplay)
@@ -16,10 +17,7 @@ for (const value of operators) {
 
 deleteBtn.addEventListener('click', removeLastTypedCharacter)
 
-clear.addEventListener('click', function () {
-    userInput = ['0']
-    setDisplay('0')
-})
+clear.addEventListener('click', displayZero)
 
 equals.addEventListener('click', evaluateInputAndDisplay)
 
