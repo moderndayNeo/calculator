@@ -67,10 +67,22 @@ describe('tests for shortenLongNumbers', () => {
         expect(shortenLongNumbers('string')).toBe('Error in shortenLongNumbers: Number type required. You passed string of type: string')
         expect(shortenLongNumbers('5')).toBe('Error in shortenLongNumbers: Number type required. You passed 5 of type: string')
     })
-    // test('returns a string type when passed a number', () => {
-    //     const result = shortenLongNumbers(12345)
-    //     expect(typeof result).toBe('string')
-    // })
+    test('returns a string type when passed a number', () => {
+        const result = shortenLongNumbers(12345)
+        const result2 = shortenLongNumbers(1234.5678)
+        expect(typeof result).toBe('string')
+        expect(typeof result2).toBe('string')
+    })
+    test('shortens numbers greater than 4 decimal places', () => {
+        expect(shortenLongNumbers(1234.56789)).toBe('1234.5678')
+        expect(shortenLongNumbers(-1234.56789)).toBe('-1234.5678')
+        expect(shortenLongNumbers(9876.54321)).toBe('9876.5432')
+        expect(shortenLongNumbers(-9876.543212345)).toBe('-9876.5432')
+    })
+    test('returns the same number as a string if fewer than 4 decimal places', () => {
+        expect(shortenLongNumbers(123.456)).toBe('123.456')
+        expect(shortenLongNumbers(123456.78)).toBe('123456.78')
+    })
 })
 
 

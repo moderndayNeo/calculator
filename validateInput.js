@@ -93,11 +93,12 @@ const checkLastFourDigits = (str) => {
     return str.slice(0, decimalPosition + 5)
 }
 
+
 const shortenLongNumbers = (num) => {
     if (typeof num !== 'number') return `Error in shortenLongNumbers: Number type required. You passed ${num} of type: ${typeof num}`
     const str = num.toString()
 
-    return !hasDecimal(str) ? str : checkLastFourDigits(str)
+    return !str.includes('.') ? str : checkLastFourDigits(str)
 }
 
 function evaluateInputAndDisplay() {
