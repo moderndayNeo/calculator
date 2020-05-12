@@ -1,4 +1,4 @@
-const { hasDecimal, isMultiplyOrDivide } = require('./helpers')
+const { hasDecimal, isMultiplyOrDivide, isAddOrSubtract } = require('./helpers')
 
 describe('tests for hasDecimal', () => {
     
@@ -39,5 +39,24 @@ describe('tests for isMultiplyOrDivide', () => {
         expect(isMultiplyOrDivide('5')).toBe(false)
         expect(isMultiplyOrDivide('1234567890')).toBe(false)
         expect(isMultiplyOrDivide('12/34')).toBe(false)
+    })
+})
+
+describe('tests for isAddOrSubtract', () => {
+    
+    test('isAddOrSubtract exists', () => {
+        expect(isAddOrSubtract).toBeDefined()
+    })
+    test('returns true when an add or subtract symbol is passed', () => {
+        expect(isAddOrSubtract('+')).toBe(true)
+        expect(isAddOrSubtract('-')).toBe(true)
+    })
+    test('returns false when a different symbol is passed', () => {
+        expect(isAddOrSubtract('*')).toBe(false)
+        expect(isAddOrSubtract('/')).toBe(false)
+    })
+    test('returns false when a number string is passed', () => {
+        expect(isAddOrSubtract('1234567890')).toBe(false)
+        expect(isAddOrSubtract('12+56')).toBe(false)
     })
 })

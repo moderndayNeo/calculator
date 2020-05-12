@@ -9,12 +9,11 @@ const isMultiplyOrDivide = (val) => {
     return val === '*' || val === '/'
 }
 
-module.exports = { hasDecimal, isMultiplyOrDivide }
-
-
-function isAddOrSubtract(val) {
+const isAddOrSubtract = (val) => {
     return val === '+' || val === '-'
 }
+
+module.exports = { hasDecimal, isMultiplyOrDivide, isAddOrSubtract }
 
 function isANumberOrDecimal(val) {
     const NUMBERS_AND_DECIMAL = '0123456789.'
