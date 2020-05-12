@@ -5,7 +5,8 @@ const {
     checkLastFourDigits,
     shortenLongNumbers,
     setDisplay,
-    isInputValid
+    isInputValid,
+    getIndexLastOperator
 } = require('./validateInput')
 
 describe('tests for removeLastFromString', () => {
@@ -150,6 +151,22 @@ describe('tests for isInputValid', () => {
     //     userInput = ['12', '+', '1', '.', '2']
     //     expect(isInputValid('.')).toBe(false)
     // })
+})
+
+describe('tests for getIndexLastOperator', () => {
+    test('getIndexLastOperator exists', () => {
+        expect(getIndexLastOperator).toBeDefined()
+    })
+    test('returns index of the last operator', () => {
+        const array = ['1','+','7','.','8','-','1','*','4']
+        const array2 = ['1','+','7','.','8','-','1','3','4']
+        expect(getIndexLastOperator(array)).toBe(7)
+        expect(getIndexLastOperator(array2)).toBe(5)
+    })
+    test('returns a message if array does not contain an operator', () => {
+        const array = ['1','6','7','.','8']
+        expect(getIndexLastOperator(array)).toBe('Error in getIndexLastOperator: array does not contain operators')
+    })
 })
 
 

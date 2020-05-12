@@ -21,8 +21,9 @@ const getLastValue = arr => {
 
 const getIndexLastOperator = arr => {
     if (arr.some(value => isOperator(value)) === false) {
-        return 'No operators'
+        return 'Error in getIndexLastOperator: array does not contain operators'
     }
+    
     const lastPlus = arr.lastIndexOf('+')
     const lastMinus = arr.lastIndexOf('-')
     const lastMultiply = arr.lastIndexOf('*')
@@ -143,7 +144,8 @@ module.exports = {
     checkLastFourDigits,
     shortenLongNumbers,
     setDisplay,
-    isInputValid
+    isInputValid,
+    getIndexLastOperator
 }
 
 /*
