@@ -1,4 +1,4 @@
-function setDisplay(str) {
+const setDisplay = (str) => {
     output.innerHTML = str
 }
 
@@ -11,15 +11,15 @@ function pushToUserInput(value) {
     userInput.push(value)
 }
 
-
 const getLastValue = (arr) => {
-    if (!Array.isArray(arr)) return `Error: you passed ${arr}, of type: ${typeof arr}`
+    if (!Array.isArray(arr))
+        return `Error: you passed ${arr}, of type: ${typeof arr}`
     if (arr.length === 0) return 'Error: you passed an empty array'
 
     return arr[arr.length - 1]
 }
 
-function isInputValid(desiredValue) {
+const isInputValid = (desiredValue) => {
     const lastValue = getLastValue(userInput)
 
     if (lastValue === '.' && desiredValue === '.') {
@@ -59,8 +59,8 @@ const isOperator = (val) => {
 
 const removeLastFromString = (str) => {
     if (typeof str !== 'string')
-    return `Error: please pass a string value. You passed ${str} of type ${typeof str}`
-  
+        return `Error: please pass a string value. You passed ${str} of type ${typeof str}`
+
     if (str.length === 0) return 'Error: string contains no values'
 
     return str.slice(0, -1)
@@ -74,14 +74,15 @@ function removeLastTypedCharacter() {
             return displayZero()
         }
     }
-    
+
     userInput.pop()
     const displayStringLessLastChar = userInput.join('')
     setDisplay(displayStringLessLastChar)
 }
 
 const checkLastFourDigits = (str) => {
-    if (typeof str !== 'string') return `Error in checkLastFourDigits: String required. You passed ${str} of type: ${typeof str}`
+    if (typeof str !== 'string')
+        return `Error in checkLastFourDigits: String required. You passed ${str} of type: ${typeof str}`
     if (!str.includes('.')) return 'Error: Value passed is not a floating value'
 
     const decimalPosition = str.indexOf('.')
@@ -93,9 +94,9 @@ const checkLastFourDigits = (str) => {
     return str.slice(0, decimalPosition + 5)
 }
 
-
 const shortenLongNumbers = (num) => {
-    if (typeof num !== 'number') return `Error in shortenLongNumbers: Number type required. You passed ${num} of type: ${typeof num}`
+    if (typeof num !== 'number')
+        return `Error in shortenLongNumbers: Number type required. You passed ${num} of type: ${typeof num}`
     const str = num.toString()
 
     return !str.includes('.') ? str : checkLastFourDigits(str)
@@ -113,8 +114,15 @@ function evaluateInputAndDisplay() {
     setDisplay(shortenedCalculatedValue)
 }
 
-module.exports = { removeLastFromString, isOperator, getLastValue, checkLastFourDigits, shortenLongNumbers }
-
+module.exports = {
+    removeLastFromString,
+    isOperator,
+    getLastValue,
+    checkLastFourDigits,
+    shortenLongNumbers,
+    setDisplay,
+    isInputValid
+}
 
 /*
 Default state for the screen : displayZero.
