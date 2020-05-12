@@ -1,7 +1,4 @@
-const NUMBERS_AND_DECIMAL = '0123456789.'
-
 // helpers for calculateValue.js
-
 
 const hasDecimal = (str) => {
     if (typeof str !== 'string') return 'Please pass a string value'
@@ -20,6 +17,7 @@ function isAddOrSubtract(val) {
 }
 
 function isANumberOrDecimal(val) {
+    const NUMBERS_AND_DECIMAL = '0123456789.'
     return NUMBERS_AND_DECIMAL.includes(val)
 }
 

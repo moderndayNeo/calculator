@@ -1,30 +1,43 @@
 const { hasDecimal, isMultiplyOrDivide } = require('./helpers')
 
-describe('tests for helper functions', () => {
-
-    test('check hasDecimal exists', () => {
+describe('tests for hasDecimal', () => {
+    
+    test('hasDecimal exists', () => {
         expect(hasDecimal).toBeDefined()
     })
-
-    test('check the tests work', () => {
+    test('returns true when string contains a decimal', () => {
         expect(hasDecimal('.')).toBe(true)
+        expect(hasDecimal('123.456')).toBe(true)
+    })
+    test('returns false when string does not contain a decimal', () => {
         expect(hasDecimal('-')).toBe(false)
         expect(hasDecimal('h')).toBe(false)
+    })
+    test('returns a message when a string value is not passed', () => {
         expect(hasDecimal(6)).toBe('Please pass a string value')
-        expect(hasDecimal(null)).toBe('Please pass a string value')
-
+        expect(hasDecimal(null)).toBe('Please pass a string value')    
     })
 })
 
+
 describe('tests for isMultiplyOrDivide', () => {
 
-    test('check if isMultiplyOrDivide exists', () => {
+    test('isMultiplyOrDivide exists', () => {
         expect(isMultiplyOrDivide).toBeDefined()
     })
-
-    test('check the function works', () => {
-        expect(isMultiplyOrDivide('+')).toBe(false)
+    test('returns true when the string contains a multiply or divide symbol', () => {
         expect(isMultiplyOrDivide('*')).toBe(true)
-
+        expect(isMultiplyOrDivide('/')).toBe(true)
+    })
+    test('returns false when another symbol is passed', () => {
+        expect(isMultiplyOrDivide('+')).toBe(false)
+        expect(isMultiplyOrDivide('-')).toBe(false)
+        expect(isMultiplyOrDivide('#')).toBe(false)
+        expect(isMultiplyOrDivide('.')).toBe(false)
+    })
+    test('returns false when a number string is passed', () => {
+        expect(isMultiplyOrDivide('5')).toBe(false)
+        expect(isMultiplyOrDivide('1234567890')).toBe(false)
+        expect(isMultiplyOrDivide('12/34')).toBe(false)
     })
 })
