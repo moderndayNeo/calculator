@@ -11,12 +11,12 @@ function pushToUserInput(value) {
     userInput.push(value)
 }
 
-// function isOperator(val) {
-//     return OPERATOR_VALUES.includes(val)
-// }
 
-function getLastValue(arr) {
-    return arr.length > 0 ? arr[arr.length - 1] : undefined
+const getLastValue = (arr) => {
+    if (!Array.isArray(arr)) return `Error: you passed ${arr}, of type: ${typeof arr}`
+    if (arr.length === 0) return 'Error: you passed an empty array'
+
+    return arr[arr.length - 1]
 }
 
 function isInputValid(desiredValue) {
@@ -66,7 +66,11 @@ const removeLastFromString = (str) => {
     return str.slice(0, -1)
 }
 
-module.exports = { removeLastFromString, isOperator }
+module.exports = { removeLastFromString, isOperator, getLastValue }
+
+
+
+
 
 function removeLastTypedCharacter() {
     if (userInput.length === 1) {
