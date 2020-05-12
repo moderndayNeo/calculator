@@ -6,7 +6,7 @@ const {
     shortenLongNumbers,
     setDisplay,
     isInputValid,
-    getIndexLastOperator
+    getIndexLastOperator,
 } = require('./validateInput')
 
 describe('tests for removeLastFromString', () => {
@@ -135,9 +135,9 @@ describe('tests for isInputValid', () => {
         expect(isInputValid('+')).toBe(false)
         expect(isInputValid('-')).toBe(false)
         userInput = ['1', '/', '*']
-        expect(isInputValid('-')).toBe(false)        
-        expect(isInputValid('+')).toBe(false)        
-        expect(isInputValid('*')).toBe(false)        
+        expect(isInputValid('-')).toBe(false)
+        expect(isInputValid('+')).toBe(false)
+        expect(isInputValid('*')).toBe(false)
     })
     test('returns false if user enters two decimals', () => {
         userInput = ['.']
@@ -150,6 +150,8 @@ describe('tests for isInputValid', () => {
     test('returns false if user enters two decimals as part of a single value', () => {
         userInput = ['12', '+', '1', '.', '2']
         expect(isInputValid('.')).toBe(false)
+        userInput = ['1', '.']
+        expect(isInputValid('.')).toBe(false)
     })
 })
 
@@ -158,13 +160,13 @@ describe('tests for getIndexLastOperator', () => {
         expect(getIndexLastOperator).toBeDefined()
     })
     test('returns index of the last operator', () => {
-        const array = ['1','+','7','.','8','-','1','*','4']
-        const array2 = ['1','+','7','.','8','-','1','3','4']
+        const array = ['1', '+', '7', '.', '8', '-', '1', '*', '4']
+        const array2 = ['1', '+', '7', '.', '8', '-', '1', '3', '4']
         expect(getIndexLastOperator(array)).toBe(7)
         expect(getIndexLastOperator(array2)).toBe(5)
     })
     test('returns -1 if array does not contain an operator', () => {
-        const array = ['1','6','7','.','8']
+        const array = ['1', '6', '7', '.', '8']
         expect(getIndexLastOperator(array)).toBe(-1)
     })
 })
