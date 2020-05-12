@@ -4,6 +4,7 @@ const {
     isAddOrSubtract,
     isANumberOrDecimal,
     containsMulOrDiv,
+    containsAddOrSub,
 } = require('./helpers')
 
 describe('tests for hasDecimal', () => {
@@ -101,7 +102,37 @@ describe('tests for containsMulOrDiv', () => {
     })
     test('returns a message when the array contains non-string values', () => {
         const withNonStrings = ['1', '2', '3', 4, 5]
+        const withBoth = ['*', '/', 5, 6]
         expect(containsMulOrDiv(withNonStrings)).toBe(
+            'Array contains some non-string values'
+        )
+        expect(containsMulOrDiv(withBoth)).toBe(
+            'Array contains some non-string values'
+        )
+    })
+})
+
+describe('tests for containsAddOrSub', () => {
+    test('containsAddOrSub exists', () => {
+        expect(containsAddOrSub).toBeDefined()
+    })
+    test('returns true when the array contains an add or subtract symbol', () => {
+        const containsAdd = ['+']
+        const containsSubtract = ['-']
+        const randomCharacters = ['*', '+', '1', '7']
+        expect(containsAddOrSub(containsAdd)).toBe(true)
+        expect(containsAddOrSub(containsSubtract)).toBe(true)
+        expect(containsAddOrSub(randomCharacters)).toBe(true)
+    })
+    test('returns false when the array does not contain add or subtract', () => {
+        const emptyArray = []
+        const noAddOrSub = ['*', '.', '/']
+        expect(containsAddOrSub(emptyArray)).toBe(false)
+        expect(containsAddOrSub(noAddOrSub)).toBe(false)
+    })
+    test('returns a message when the array contains non-string values', () => {
+        const withNonStrings = ['1', '2', '3', 4, 5]
+        expect(containsAddOrSub(withNonStrings)).toBe(
             'Array contains some non-string values'
         )
     })
