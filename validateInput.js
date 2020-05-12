@@ -19,6 +19,9 @@ const getLastValue = (arr) => {
     return arr[arr.length - 1]
 }
 
+
+
+
 const getIndexLastOperator = (arr) => {
     if (arr.some((value) => isOperator(value)) === false) return -1
 
@@ -41,7 +44,7 @@ const isInputValid = (desiredValue) => {
         if (isOperator(desiredValue)) return false
     }
 
-    if (userInput.includes('.')) {
+    if (desiredValue === '.' && userInput.includes('.')) {
         const indexLastDecimal = userInput.lastIndexOf('.')
         const indexLastOperator = getIndexLastOperator(userInput)
         if (indexLastDecimal > indexLastOperator) return false
@@ -57,6 +60,9 @@ const isInputValid = (desiredValue) => {
 
     return true
 }
+
+
+
 
 const screenDisplaysZero = () => output.innerHTML === '0'
 
@@ -125,6 +131,7 @@ const shortenLongNumbers = (num) => {
 
 function evaluateInputAndDisplay() {
     console.log(`userInput is ${userInput}`)
+    // if last value is not a number, return
     const rawCalculatedValue = calculateFinalValue(userInput)
     console.log(`rawCalculatedValue is ${rawCalculatedValue}`)
     console.log(`${typeof rawCalculatedValue}`)
@@ -132,6 +139,8 @@ function evaluateInputAndDisplay() {
     console.log(`shortenedCalculatedValue is ${shortenedCalculatedValue}`)
     userInput = shortenedCalculatedValue.split('')
     console.log(`userInput is ${userInput}`)
+
+
     setDisplay(shortenedCalculatedValue)
 }
 

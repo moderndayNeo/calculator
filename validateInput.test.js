@@ -168,23 +168,3 @@ describe('tests for getIndexLastOperator', () => {
         expect(getIndexLastOperator(array)).toBe(-1)
     })
 })
-
-
-// look at the array backwards, do we encounter a decimal before an operator?
-
-// find index of last operator or 0, use reverseFind
-//
-// take a slice of the array from that index onwards
-// check if it contains a decimal
-
-// see if userInput array contains a decimal
-// reverse the array
-// array.findIndexOf the first operator
-// array.findIndexOf the first decimal
-// if the decimal's index is less than the operator's, then return false
-
-/*
-['1', '2', '.', '5']
-['0', '.', '4']
-['*', '6', '.', '4']
-*/
