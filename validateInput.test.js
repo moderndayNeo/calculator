@@ -1,4 +1,4 @@
-const { removeLastFromString, isOperator, getLastValue } = require('./validateInput')
+const { removeLastFromString, isOperator, getLastValue, checkLastFourDigits } = require('./validateInput')
 
 describe('tests for removeLastFromString', () => {
     test('removeLastFromString exists', () => {
@@ -35,9 +35,28 @@ describe('tests for getLastValue', () => {
     })
 })
 
-
-
-
+describe('tests for checkLastFourDigits', () => {
+    test('checkLastFourDigits exists', () => {
+        expect(checkLastFourDigits).toBeDefined()
+    })
+    test('returns a number string trimmed to max. 4 decimal places', () => {
+        expect(checkLastFourDigits('1234.56789')).toBe('1234.5678')
+        expect(checkLastFourDigits('-1234.56789')).toBe('-1234.5678')
+        expect(checkLastFourDigits('9876.54321')).toBe('9876.5432')
+        expect(checkLastFourDigits('-9876.543212345')).toBe('-9876.5432')
+    })
+    test('returns a message if it doesn\'t receive a string value', () => {
+        expect(checkLastFourDigits(6)).toBe('Error: String required. You passed 6 of type: number')
+        expect(checkLastFourDigits(1234.5678)).toBe('Error: String required. You passed 1234.5678 of type: number')
+    })
+    test('returns the number string unmodified if fewer than 4 decimal places', () => {
+        expect(checkLastFourDigits('123.456')).toBe('123.456')
+        expect(checkLastFourDigits('123456.78')).toBe('123456.78')
+    })
+    test('returns a message if value passed is not a floating value', () => {
+        expect(checkLastFourDigits('123456')).toBe('Error: Value passed is not a floating value')
+    })
+})
 
 
 

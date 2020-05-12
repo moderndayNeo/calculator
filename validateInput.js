@@ -66,12 +66,6 @@ const removeLastFromString = (str) => {
     return str.slice(0, -1)
 }
 
-module.exports = { removeLastFromString, isOperator, getLastValue }
-
-
-
-
-
 function removeLastTypedCharacter() {
     if (userInput.length === 1) {
         if (userInput === ['0']) {
@@ -80,13 +74,16 @@ function removeLastTypedCharacter() {
             return displayZero()
         }
     }
-
+    
     userInput.pop()
     const displayStringLessLastChar = userInput.join('')
     setDisplay(displayStringLessLastChar)
 }
 
-function checkLastFourDigits(str) {
+const checkLastFourDigits = (str) => {
+    if (typeof str !== 'string') return `Error: String required. You passed ${str} of type: ${typeof str}`
+    if (!str.includes('.')) return 'Error: Value passed is not a floating value'
+
     const decimalPosition = str.indexOf('.')
     const valuesAfterDecimal = str.substring(decimalPosition + 1)
 
@@ -112,6 +109,9 @@ function evaluateInputAndDisplay() {
     console.log(`userInput is ${userInput}`)
     setDisplay(shortenedCalculatedValue)
 }
+
+module.exports = { removeLastFromString, isOperator, getLastValue, checkLastFourDigits }
+
 
 /*
 Default state for the screen : displayZero.
