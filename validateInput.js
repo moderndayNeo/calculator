@@ -19,8 +19,18 @@ const getLastValue = arr => {
     return arr[arr.length - 1]
 }
 
-const getLastOperator = arr => {
-
+const getIndexLastOperator = arr => {
+    if (arr.some(value => isOperator(value)) === false) {
+        return 'No operators'
+    }
+    const lastPlus = arr.lastIndexOf('+')
+    const lastMinus = arr.lastIndexOf('-')
+    const lastMultiply = arr.lastIndexOf('*')
+    const lastDivide = arr.lastIndexOf('/')
+    const indexes = [lastPlus, lastDivide, lastMinus, lastMultiply]
+    const sorted = indexes.sort()
+    const indexLastOperator = sorted[3]
+    return indexLastOperator
 }
 
 
@@ -32,6 +42,10 @@ const isInputValid = (desiredValue) => {
         if (desiredValue === '.') return false
         if (isOperator(desiredValue)) return false
     }
+
+    // if (userInput.includes('.')) {
+    //     let lastOperator = userInput.lastIndexOf('')
+    // }
 
     if (!isOperator(lastValue)) {
         return true
