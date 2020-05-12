@@ -18,16 +18,20 @@ const isANumberOrDecimal = (val) => {
     return NUMBERS_AND_DECIMAL.includes(val)
 }
 
-module.exports = {
-    hasDecimal,
-    isMultiplyOrDivide,
-    isAddOrSubtract,
-    isANumberOrDecimal,
-}
+const containsMulOrDiv = (arr) => {
+    if (arr.some(value => typeof value !== 'string')) return 'Array contains some non-string values'
 
-function containsMulOrDiv(arr) {
     return arr.includes('*') || arr.includes('/')
 }
+
+
+            module.exports = {
+                hasDecimal,
+                isMultiplyOrDivide,
+                isAddOrSubtract,
+                isANumberOrDecimal,
+                containsMulOrDiv
+            }
 
 function containsAddOrSub(arr) {
     return arr.includes('+') || arr.includes('-')

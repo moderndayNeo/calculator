@@ -1,4 +1,10 @@
-const { hasDecimal, isMultiplyOrDivide, isAddOrSubtract, isANumberOrDecimal } = require('./helpers')
+const {
+    hasDecimal,
+    isMultiplyOrDivide,
+    isAddOrSubtract,
+    isANumberOrDecimal,
+    containsMulOrDiv,
+} = require('./helpers')
 
 describe('tests for hasDecimal', () => {
     test('hasDecimal exists', () => {
@@ -74,5 +80,29 @@ describe('tests for isANumberOrDecimal', () => {
         expect(isANumberOrDecimal('-')).toBe(false)
         expect(isANumberOrDecimal('*')).toBe(false)
         expect(isANumberOrDecimal('/')).toBe(false)
+    })
+})
+
+describe('tests for containsMulOrDiv', () => {
+    test('containsMulOrDiv exists', () => {
+        expect(containsMulOrDiv).toBeDefined()
+    })
+    test('returns true when the array contains a multiply or divide symbol', () => {
+        const withMultiply = ['*']
+        const withDivide = ['/']
+        expect(containsMulOrDiv(withMultiply)).toBe(true)
+        expect(containsMulOrDiv(withDivide)).toBe(true)
+    })
+    test('returns false when the array does not contain a multiply or divide symbol', () => {
+        const noMulOrDiv = ['1', '2', '3']
+        const noMulOrDiv2 = ['string', '3', 'multiply']
+        expect(containsMulOrDiv(noMulOrDiv)).toBe(false)
+        expect(containsMulOrDiv(noMulOrDiv2)).toBe(false)
+    })
+    test('returns a message when the array contains non-string values', () => {
+        const withNonStrings = ['1', '2', '3', 4, 5]
+        expect(containsMulOrDiv(withNonStrings)).toBe(
+            'Array contains some non-string values'
+        )
     })
 })
