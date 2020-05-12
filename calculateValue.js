@@ -90,5 +90,5 @@ function calculateFinalValue(array) {
     const mulsDivsProcessed = processMultiplyAndDivide(equation)
     const calculatedResult = processAddAndSubtract(mulsDivsProcessed)
 
-    return calculatedResult
+    return +calculatedResult[0]
 }

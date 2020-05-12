@@ -81,7 +81,7 @@ function removeLastTypedCharacter() {
 }
 
 const checkLastFourDigits = (str) => {
-    if (typeof str !== 'string') return `Error: String required. You passed ${str} of type: ${typeof str}`
+    if (typeof str !== 'string') return `Error in checkLastFourDigits: String required. You passed ${str} of type: ${typeof str}`
     if (!str.includes('.')) return 'Error: Value passed is not a floating value'
 
     const decimalPosition = str.indexOf('.')
@@ -93,7 +93,8 @@ const checkLastFourDigits = (str) => {
     return str.slice(0, decimalPosition + 5)
 }
 
-function shortenLongNumbers(num) {
+const shortenLongNumbers = (num) => {
+    if (typeof num !== 'number') return `Error in shortenLongNumbers: Number type required. You passed ${num} of type: ${typeof num}`
     const str = num.toString()
 
     return !hasDecimal(str) ? str : checkLastFourDigits(str)
@@ -103,6 +104,7 @@ function evaluateInputAndDisplay() {
     console.log(`userInput is ${userInput}`)
     const rawCalculatedValue = calculateFinalValue(userInput)
     console.log(`rawCalculatedValue is ${rawCalculatedValue}`)
+    console.log(`${typeof rawCalculatedValue}`)
     const shortenedCalculatedValue = shortenLongNumbers(rawCalculatedValue)
     console.log(`shortenedCalculatedValue is ${shortenedCalculatedValue}`)
     userInput = shortenedCalculatedValue.split('')
@@ -110,7 +112,7 @@ function evaluateInputAndDisplay() {
     setDisplay(shortenedCalculatedValue)
 }
 
-module.exports = { removeLastFromString, isOperator, getLastValue, checkLastFourDigits }
+module.exports = { removeLastFromString, isOperator, getLastValue, checkLastFourDigits, shortenLongNumbers }
 
 
 /*
