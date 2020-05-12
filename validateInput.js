@@ -11,7 +11,7 @@ function pushToUserInput(value) {
     userInput.push(value)
 }
 
-const getLastValue = (arr) => {
+const getLastValue = arr => {
     if (!Array.isArray(arr))
         return `Error: you passed ${arr}, of type: ${typeof arr}`
     if (arr.length === 0) return 'Error: you passed an empty array'
@@ -19,11 +19,18 @@ const getLastValue = (arr) => {
     return arr[arr.length - 1]
 }
 
+const getLastOperator = arr => {
+
+}
+
+
+
 const isInputValid = (desiredValue) => {
     const lastValue = getLastValue(userInput)
 
-    if (lastValue === '.' && desiredValue === '.') {
-        return false
+    if (lastValue === '.') {
+        if (desiredValue === '.') return false
+        if (isOperator(desiredValue)) return false
     }
 
     if (!isOperator(lastValue)) {
@@ -36,6 +43,7 @@ const isInputValid = (desiredValue) => {
 
     return true
 }
+
 
 const screenDisplaysZero = () => output.innerHTML === '0'
 

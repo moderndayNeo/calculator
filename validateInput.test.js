@@ -142,4 +142,16 @@ describe('tests for isInputValid', () => {
         userInput = ['.']
         expect(isInputValid('+')).toBe(false)
     })
+    // test('returns false is user enters two decimals as part of a single value', () => {
+    //     userInput = ['12', '+', '1', '.', '2']
+    //     expect(isInputValid('.')).toBe(false)
+    // })
 })
+
+// look at the array backwards, do we encounter a decimal before an operator?
+
+// find index of last operator or 0
+// take a slice of the array from that index onwards
+// check if it contains a decimal
+
+// see if array includes a decimal
