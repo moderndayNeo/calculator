@@ -1,7 +1,6 @@
-const { hasDecimal, isMultiplyOrDivide, isAddOrSubtract } = require('./helpers')
+const { hasDecimal, isMultiplyOrDivide, isAddOrSubtract, isANumberOrDecimal } = require('./helpers')
 
 describe('tests for hasDecimal', () => {
-    
     test('hasDecimal exists', () => {
         expect(hasDecimal).toBeDefined()
     })
@@ -15,13 +14,11 @@ describe('tests for hasDecimal', () => {
     })
     test('returns a message when a string value is not passed', () => {
         expect(hasDecimal(6)).toBe('Please pass a string value')
-        expect(hasDecimal(null)).toBe('Please pass a string value')    
+        expect(hasDecimal(null)).toBe('Please pass a string value')
     })
 })
 
-
 describe('tests for isMultiplyOrDivide', () => {
-
     test('isMultiplyOrDivide exists', () => {
         expect(isMultiplyOrDivide).toBeDefined()
     })
@@ -43,7 +40,6 @@ describe('tests for isMultiplyOrDivide', () => {
 })
 
 describe('tests for isAddOrSubtract', () => {
-    
     test('isAddOrSubtract exists', () => {
         expect(isAddOrSubtract).toBeDefined()
     })
@@ -58,5 +54,25 @@ describe('tests for isAddOrSubtract', () => {
     test('returns false when a number string is passed', () => {
         expect(isAddOrSubtract('1234567890')).toBe(false)
         expect(isAddOrSubtract('12+56')).toBe(false)
+    })
+})
+
+describe('tests for isANumberOrDecimal', () => {
+    test('isANumberOrDecimal exists', () => {
+        expect(isANumberOrDecimal).toBeDefined()
+    })
+    test('returns true when a number is passed', () => {
+        expect(isANumberOrDecimal('1')).toBe(true)
+        expect(isANumberOrDecimal('123')).toBe(true)
+        expect(isANumberOrDecimal('1')).toBe(true)
+    })
+    test('returns true when a decimal is passed', () => {
+        expect(isANumberOrDecimal('.')).toBe(true)
+    })
+    test('returns false when an operator is passed', () => {
+        expect(isANumberOrDecimal('+')).toBe(false)
+        expect(isANumberOrDecimal('-')).toBe(false)
+        expect(isANumberOrDecimal('*')).toBe(false)
+        expect(isANumberOrDecimal('/')).toBe(false)
     })
 })

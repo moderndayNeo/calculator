@@ -13,11 +13,16 @@ const isAddOrSubtract = (val) => {
     return val === '+' || val === '-'
 }
 
-module.exports = { hasDecimal, isMultiplyOrDivide, isAddOrSubtract }
-
-function isANumberOrDecimal(val) {
+const isANumberOrDecimal = (val) => {
     const NUMBERS_AND_DECIMAL = '0123456789.'
     return NUMBERS_AND_DECIMAL.includes(val)
+}
+
+module.exports = {
+    hasDecimal,
+    isMultiplyOrDivide,
+    isAddOrSubtract,
+    isANumberOrDecimal,
 }
 
 function containsMulOrDiv(arr) {
