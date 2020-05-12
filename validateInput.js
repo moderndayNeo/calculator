@@ -11,7 +11,7 @@ function pushToUserInput(value) {
     userInput.push(value)
 }
 
-const getLastValue = arr => {
+const getLastValue = (arr) => {
     if (!Array.isArray(arr))
         return `Error: you passed ${arr}, of type: ${typeof arr}`
     if (arr.length === 0) return 'Error: you passed an empty array'
@@ -19,11 +19,9 @@ const getLastValue = arr => {
     return arr[arr.length - 1]
 }
 
-const getIndexLastOperator = arr => {
-    if (arr.some(value => isOperator(value)) === false) {
-        return 'Error in getIndexLastOperator: array does not contain operators'
-    }
-    
+const getIndexLastOperator = (arr) => {
+    if (arr.some((value) => isOperator(value)) === false) return -1
+
     const lastPlus = arr.lastIndexOf('+')
     const lastMinus = arr.lastIndexOf('-')
     const lastMultiply = arr.lastIndexOf('*')
@@ -31,10 +29,9 @@ const getIndexLastOperator = arr => {
     const indexes = [lastPlus, lastDivide, lastMinus, lastMultiply]
     const sorted = indexes.sort()
     const indexLastOperator = sorted[3]
+
     return indexLastOperator
 }
-
-
 
 const isInputValid = (desiredValue) => {
     const lastValue = getLastValue(userInput)
@@ -44,9 +41,11 @@ const isInputValid = (desiredValue) => {
         if (isOperator(desiredValue)) return false
     }
 
-    // if (userInput.includes('.')) {
-    //     let lastOperator = userInput.lastIndexOf('')
-    // }
+    if (userInput.includes('.')) {
+        const indexLastDecimal = userInput.lastIndexOf('.')
+        const indexLastOperator = getIndexLastOperator(userInput)
+        if (indexLastDecimal > indexLastOperator) return false
+    }
 
     if (!isOperator(lastValue)) {
         return true
@@ -58,7 +57,6 @@ const isInputValid = (desiredValue) => {
 
     return true
 }
-
 
 const screenDisplaysZero = () => output.innerHTML === '0'
 
@@ -145,7 +143,7 @@ module.exports = {
     shortenLongNumbers,
     setDisplay,
     isInputValid,
-    getIndexLastOperator
+    getIndexLastOperator,
 }
 
 /*

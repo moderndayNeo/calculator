@@ -147,10 +147,10 @@ describe('tests for isInputValid', () => {
         userInput = ['.']
         expect(isInputValid('+')).toBe(false)
     })
-    // test('returns false if user enters two decimals as part of a single value', () => {
-    //     userInput = ['12', '+', '1', '.', '2']
-    //     expect(isInputValid('.')).toBe(false)
-    // })
+    test('returns false if user enters two decimals as part of a single value', () => {
+        userInput = ['12', '+', '1', '.', '2']
+        expect(isInputValid('.')).toBe(false)
+    })
 })
 
 describe('tests for getIndexLastOperator', () => {
@@ -163,9 +163,9 @@ describe('tests for getIndexLastOperator', () => {
         expect(getIndexLastOperator(array)).toBe(7)
         expect(getIndexLastOperator(array2)).toBe(5)
     })
-    test('returns a message if array does not contain an operator', () => {
+    test('returns -1 if array does not contain an operator', () => {
         const array = ['1','6','7','.','8']
-        expect(getIndexLastOperator(array)).toBe('Error in getIndexLastOperator: array does not contain operators')
+        expect(getIndexLastOperator(array)).toBe(-1)
     })
 })
 
