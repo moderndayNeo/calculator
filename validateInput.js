@@ -52,27 +52,21 @@ function collectInputAndDisplay(event) {
     setDisplay(displayString)
 }
 
-// function removeLastFromString(str) {
-//     return str.slice(0, -1)
-// }
-
 const isOperator = (val) => {
     const OPERATOR_VALUES = '+-/*'
     return OPERATOR_VALUES.includes(val)
 }
 
 const removeLastFromString = (str) => {
+    if (typeof str !== 'string')
+    return `Error: please pass a string value. You passed ${str} of type ${typeof str}`
+  
+    if (str.length === 0) return 'Error: string contains no values'
+
     return str.slice(0, -1)
 }
 
 module.exports = { removeLastFromString, isOperator }
-
-
-
-
-
-
-
 
 function removeLastTypedCharacter() {
     if (userInput.length === 1) {

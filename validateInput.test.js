@@ -1,13 +1,23 @@
 const { removeLastFromString, isOperator } = require('./validateInput')
 
-
-
-describe('check removeLastFromString exists', () => {
-    test('check it exists', () => {
+describe('tests for removeLastFromString', () => {
+    test('removeLastFromString exists', () => {
         expect(removeLastFromString).toBeDefined()
-        expect(removeLastFromString('potato')).toBe('potat')
+    })
+    test('returns a string with the last character removed', () => {
+        expect(removeLastFromString('string')).toBe('strin')
+        expect(removeLastFromString('example')).toBe('exampl')
+    })
+    test('returns a message if the string is empty', () => {
+        expect(removeLastFromString('')).toBe('Error: string contains no values')
+    })
+    test('returns a message if a non-string value is passed', () => {
+        expect(removeLastFromString(6)).toBe('Error: please pass a string value. You passed 6 of type number')
+        expect(removeLastFromString([])).toBe('Error: please pass a string value. You passed  of type object')
     })
 })
+
+
 
 describe('checks isOperator exists', () => {
     test('...', () => {
