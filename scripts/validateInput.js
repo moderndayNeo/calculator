@@ -66,7 +66,7 @@ const isNumberString = (string) => {
 function collectInputAndDisplay(event) {
     const value = event.target.innerHTML
 
-    if (userInput[0] !== '0') {
+    if (userInput[0] !== '0' || userInput.length > 1) {
         if (isInputValid(value)) {
             pushToUserInput(value)
         }
@@ -79,6 +79,8 @@ function collectInputAndDisplay(event) {
             pushToUserInput(value)
         }
     }
+
+    
 
     const displayString = userInput.join('')
     setDisplay(displayString)
