@@ -58,15 +58,26 @@ const isInputValid = (desiredValue) => {
     return true
 }
 
-const screenDisplaysZero = () => output.innerHTML === '0'
+const isNumberString = (string) => {
+    const numbers = '1234567890'
+    return numbers.includes(string)
+}
 
 function collectInputAndDisplay(event) {
     const value = event.target.innerHTML
 
-    if (screenDisplaysZero() && typeof parseInt(value) === 'number') {
-        userInput[0] = value
-    } else if (isInputValid(value)) {
-        pushToUserInput(value)
+    if (userInput[0] !== '0') {
+        if (isInputValid(value)) {
+            pushToUserInput(value)
+        }
+    } 
+
+    if (userInput[0] === '0') {
+        if (isNumberString(value)) {
+            userInput[0] = value
+        } else {
+            pushToUserInput(value)
+        }
     }
 
     const displayString = userInput.join('')
@@ -146,6 +157,7 @@ module.exports = {
     setDisplay,
     isInputValid,
     getIndexLastOperator,
+    isNumberString,
 }
 
 /*
