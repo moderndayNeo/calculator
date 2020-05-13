@@ -27,7 +27,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
+    height: 85vh;
 }
 
 #calculator {
@@ -77,7 +78,6 @@ header {
 .numbersAndDecimal:hover {
     background-color: #1b0029;
     color: white;
-    transition: 0.2s;
 }
 
 #clear {
@@ -95,7 +95,6 @@ header {
 
 .orangeButtons:hover {
     background-color: #a0530c;
-    transition: 1s;
 }
 
 #multiply {
@@ -118,6 +117,10 @@ header {
     grid-area: 5/4/7/5;
     background-color: #be0f0f;
     padding-top: 60%;
+}
+
+#equals:hover {
+    background-color: #940c0c;
 }
 
 #zero {
