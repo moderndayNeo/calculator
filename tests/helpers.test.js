@@ -5,7 +5,7 @@ const {
     isANumberOrDecimal,
     containsMulOrDiv,
     containsAddOrSub,
-} = require('./helpers')
+} = require('../scripts/helpers')
 
 describe('tests for hasDecimal', () => {
     test('hasDecimal exists', () => {

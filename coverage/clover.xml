@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1589320647325" clover="3.2.0">
-  <project timestamp="1589320647325" name="All files">
+<coverage generated="1589366902916" clover="3.2.0">
+  <project timestamp="1589366902916" name="All files">
     <metrics statements="100" coveredstatements="72" conditionals="60" coveredconditionals="47" methods="23" coveredmethods="16" elements="183" coveredelements="135" complexity="0" loc="100" ncloc="100" packages="1" files="2" classes="2"/>
-    <file name="helpers.js" path="/Users/adamzdrzalka/Documents/Programming/earlyprojects/calculator/helpers.js">
+    <file name="helpers.js" path="/Users/adamzdrzalka/Documents/Programming/earlyprojects/calculator/scripts/helpers.js">
       <metrics statements="19" coveredstatements="19" conditionals="14" coveredconditionals="14" methods="8" coveredmethods="8"/>
       <line num="3" count="1" type="stmt"/>
       <line num="4" count="6" type="cond" truecount="2" falsecount="0"/>
@@ -24,7 +24,7 @@
       <line num="32" count="5" type="cond" truecount="2" falsecount="0"/>
       <line num="35" count="1" type="stmt"/>
     </file>
-    <file name="validateInput.js" path="/Users/adamzdrzalka/Documents/Programming/earlyprojects/calculator/validateInput.js">
+    <file name="validateInput.js" path="/Users/adamzdrzalka/Documents/Programming/earlyprojects/calculator/scripts/validateInput.js">
       <metrics statements="81" coveredstatements="53" conditionals="46" coveredconditionals="33" methods="15" coveredmethods="8"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="0" type="stmt"/>

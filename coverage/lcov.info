@@ -1,5 +1,5 @@
 TN:
-SF:helpers.js
+SF:scripts/helpers.js
 FN:3,(anonymous_0)
 FN:8,(anonymous_1)
 FN:12,(anonymous_2)
@@ -57,7 +57,7 @@ BRF:14
 BRH:14
 end_of_record
 TN:
-SF:validateInput.js
+SF:scripts/validateInput.js
 FN:1,(anonymous_0)
 FN:5,displayZero
 FN:10,pushToUserInput

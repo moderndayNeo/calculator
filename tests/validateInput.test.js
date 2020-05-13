@@ -7,7 +7,7 @@ const {
     setDisplay,
     isInputValid,
     getIndexLastOperator,
-} = require('./validateInput')
+} = require('../scripts/validateInput')
 
 describe('tests for removeLastFromString', () => {
     test('removeLastFromString exists', () => {
