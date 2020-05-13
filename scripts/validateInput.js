@@ -72,7 +72,7 @@ function collectInputAndDisplay(event) {
         }
     } 
 
-    if (userInput[0] === '0') {
+    if (userInput.length === 1 && userInput[0] === '0') {
         if (isNumberString(value)) {
             userInput[0] = value
         } else {
