@@ -137,6 +137,10 @@ const shortenLongNumbers = (num) => {
 }
 
 function evaluateInputAndDisplay() {
+    const lastValue = userInput[userInput.length - 1]
+
+    if (isOperator(lastValue) || lastValue === '.') return
+    
     console.log(`userInput is ${userInput}`)
     // if last value is not a number, return
     const rawCalculatedValue = calculateFinalValue(userInput)
