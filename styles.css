@@ -8,7 +8,6 @@ body {
 }
 
 #topbar {
-    border: 1px blue solid;
     height: 50px;
     display: flex;
     justify-content: center;
@@ -80,6 +79,7 @@ header {
 
 #delete {
     grid-area: 2/2/3/3;
+    border-color: black;
 }
 
 .orangeButtons {
@@ -126,6 +126,13 @@ footer {
     position: absolute;
     bottom: 8px;
     color: white;
+    font-family: 'Digital-7';
+}
+
+@media only screen and (min-width: 450px) {
+    #container {
+        width: 80%;
+    }
 }
 
 @media only screen and (min-width: 500px) {
