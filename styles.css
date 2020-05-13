@@ -28,7 +28,6 @@ header {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    /* height: 85vh; */
 }
 
 #calculator {
@@ -137,6 +136,16 @@ footer {
     bottom: 8px;
     color: white;
     font-family: 'Digital-7';
+}
+
+
+@media only screen and (min-width: 600px) {
+    header {
+        font-size: 45px;
+    }
+    footer {
+        font-size: 20px;
+    }
 }
 
 @media only screen and (min-width: 900px) {
