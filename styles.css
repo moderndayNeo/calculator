@@ -27,8 +27,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* height: 100vh; */
-    height: 85vh;
+    height: 100vh;
+    /* height: 85vh; */
 }
 
 #calculator {
@@ -139,35 +139,11 @@ footer {
     font-family: 'Digital-7';
 }
 
-@media only screen and (min-width: 450px) {
-    #calculator {
-        width: 80%;
-    }
-}
-
-@media only screen and (min-width: 500px) {
-    #calculator {
-        width: 80%;
-    }
-}
-
-@media only screen and (min-width: 700px) {
-    #calculator {
-        width: 60%;
-        height: 600px;
-        margin: 20% auto;
-        font-size: 120%;
-    }
-}
-
 @media only screen and (min-width: 900px) {
     #calculator {
         height: 500px;
         width: 40%;
         margin: 5% auto;
-    }
-    #equals {
-        padding-top: 30%;
     }
 }
 
@@ -180,5 +156,11 @@ footer {
 @media only screen and (min-width: 1400px) {
     #calculator {
         width: 25%;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    #calculator {
+        width: 20%;
     }
 }
