@@ -8,8 +8,7 @@
     "jest": "^26.0.1"
   },
   "scripts": {
-    "test": "jest --watchAll",
-    "coverage": "jest --coverage"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",

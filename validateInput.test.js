@@ -170,3 +170,5 @@ describe('tests for getIndexLastOperator', () => {
         expect(getIndexLastOperator(array)).toBe(-1)
     })
 })
+
+// Next to do: test the calculation functions

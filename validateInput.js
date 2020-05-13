@@ -19,9 +19,6 @@ const getLastValue = (arr) => {
     return arr[arr.length - 1]
 }
 
-
-
-
 const getIndexLastOperator = (arr) => {
     if (arr.some((value) => isOperator(value)) === false) return -1
 
@@ -60,9 +57,6 @@ const isInputValid = (desiredValue) => {
 
     return true
 }
-
-
-
 
 const screenDisplaysZero = () => output.innerHTML === '0'
 
@@ -139,7 +133,6 @@ function evaluateInputAndDisplay() {
     console.log(`shortenedCalculatedValue is ${shortenedCalculatedValue}`)
     userInput = shortenedCalculatedValue.split('')
     console.log(`userInput is ${userInput}`)
-
 
     setDisplay(shortenedCalculatedValue)
 }
