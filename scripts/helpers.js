@@ -1,5 +1,3 @@
-// helpers for calculateValue.js
-
 const hasDecimal = (str) => {
     if (typeof str !== 'string') return 'Please pass a string value'
     return str.includes('.')

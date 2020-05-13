@@ -7,7 +7,7 @@ const {
     setDisplay,
     isInputValid,
     getIndexLastOperator,
-    isNumberString
+    isNumberString,
 } = require('../scripts/validateInput')
 
 describe('tests for removeLastFromString', () => {
@@ -188,6 +188,3 @@ describe('tests for isNumberString', () => {
         expect(isNumberString('-')).toBe(false)
     })
 })
-
-
-// Next to do: test the calculation functions

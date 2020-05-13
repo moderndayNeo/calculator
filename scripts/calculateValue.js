@@ -1,4 +1,3 @@
-
 function countTheOperators(arr) {
     const opCount = arr.filter((x) => OPERATOR_VALUES.includes(x)).length
     return opCount

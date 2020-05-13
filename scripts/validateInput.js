@@ -70,7 +70,7 @@ function collectInputAndDisplay(event) {
         if (isInputValid(value)) {
             pushToUserInput(value)
         }
-    } 
+    }
 
     if (userInput.length === 1 && userInput[0] === '0') {
         if (isNumberString(value)) {
@@ -79,8 +79,6 @@ function collectInputAndDisplay(event) {
             pushToUserInput(value)
         }
     }
-
-    
 
     const displayString = userInput.join('')
     setDisplay(displayString)
@@ -140,17 +138,10 @@ function evaluateInputAndDisplay() {
     const lastValue = userInput[userInput.length - 1]
     if (isOperator(lastValue) || lastValue === '.') return
     if (userInput[0] === '-') userInput.unshift('0')
-    
-    console.log(`userInput is ${userInput}`)
-    // if last value is not a number, return
-    const rawCalculatedValue = calculateFinalValue(userInput)
-    console.log(`rawCalculatedValue is ${rawCalculatedValue}`)
-    console.log(`${typeof rawCalculatedValue}`)
-    const shortenedCalculatedValue = shortenLongNumbers(rawCalculatedValue)
-    console.log(`shortenedCalculatedValue is ${shortenedCalculatedValue}`)
-    userInput = shortenedCalculatedValue.split('')
-    console.log(`userInput is ${userInput}`)
 
+    const rawCalculatedValue = calculateFinalValue(userInput)
+    const shortenedCalculatedValue = shortenLongNumbers(rawCalculatedValue)
+    userInput = shortenedCalculatedValue.split('')
     setDisplay(shortenedCalculatedValue)
 }
 
@@ -165,24 +156,3 @@ module.exports = {
     getIndexLastOperator,
     isNumberString,
 }
-
-/*
-Default state for the screen : displayZero.
-displayZero is displayed when the user first loads the calculator,
-and when the user clicks Clear.
-
-Set userInput as ['0']. If user presses an operator, then append to the string
-If user presses a decimal, append to string
-If user presses a number, then remove the zero and append the number
-
-
-User presses a number between 1-9?
-    Remove 0, append number to string :
-    append value ()
-
- Test -3.8-4 doesn't work.
- In mergeAnyConsecutiveNumbers
-
- Press operator then equals leads to NaN
-
-*/
