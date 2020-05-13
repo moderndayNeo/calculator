@@ -117,6 +117,17 @@ header {
     grid-area: 6/2/7/4;
 }
 
+#footer-container {
+    display: flex;
+    justify-content: center;
+}
+
+footer {
+    position: absolute;
+    bottom: 8px;
+    color: white;
+}
+
 @media only screen and (min-width: 500px) {
     #container {
         width: 80%;
