@@ -2,6 +2,13 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Digital-7';
+    src: url('./webfont-kit/Digital-7.eot') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
 body {
     background-color: #000010;
     font-family: 'Arial', 'Lucida Grande';
