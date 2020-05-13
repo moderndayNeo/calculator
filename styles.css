@@ -153,6 +153,7 @@ footer {
         height: 500px;
         width: 40%;
         margin: 5% auto;
+        padding: 10px;
     }
 }
 
@@ -165,6 +166,7 @@ footer {
 @media only screen and (min-width: 1400px) {
     #calculator {
         width: 25%;
+        padding: 12px;
     }
 }
 
