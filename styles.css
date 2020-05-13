@@ -4,7 +4,7 @@
 
 body {
     background-color: #000010;
-    font-family: 'Arial','Lucida Grande';
+    font-family: 'Arial', 'Lucida Grande';
 }
 
 #container {
@@ -21,49 +21,11 @@ body {
     padding: 2%;
 }
 
-@media only screen and (min-width: 500px) {
-    #container {
-        width: 80%;
-    }
-}
-
-@media only screen and (min-width: 700px) {
-    #container {
-        width: 60%;
-        height: 600px;
-        margin: 20% auto;
-        font-size: 120%;
-    }
-}
-
-@media only screen and (min-width: 900px) {
-    #container {
-        height: 500px;
-        width: 40%;
-        margin: 5% auto;
-    }
-    #equals {
-        padding-top: 30%;
-    }
-}
-
-@media only screen and (min-width: 1200px) {
-    #container {
-        width: 30%;
-    }
-}
-
-@media only screen and (min-width: 1400px) {
-    #container {
-        width: 25%;
-    }
-}
-
 #container div {
     border: thin grey solid;
     border-radius: 4%;
     text-align: center;
-    color: lightgrey; 
+    color: lightgrey;
     font-size: 200%;
 }
 
@@ -93,7 +55,7 @@ body {
 }
 
 .numbersAndDecimal:hover {
-    background-color: #1B0029;
+    background-color: #1b0029;
     color: white;
     transition: 0.2s;
 }
@@ -133,7 +95,7 @@ body {
 
 #equals {
     grid-area: 5/4/7/5;
-    background-color: #BE0F0F;
+    background-color: #be0f0f;
     padding-top: 60%;
 }
 
@@ -141,3 +103,40 @@ body {
     grid-area: 6/2/7/4;
 }
 
+@media only screen and (min-width: 500px) {
+    #container {
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    #container {
+        width: 60%;
+        height: 600px;
+        margin: 20% auto;
+        font-size: 120%;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    #container {
+        height: 500px;
+        width: 40%;
+        margin: 5% auto;
+    }
+    #equals {
+        padding-top: 30%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #container {
+        width: 30%;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    #container {
+        width: 25%;
+    }
+}
