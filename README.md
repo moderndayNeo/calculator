@@ -17,3 +17,4 @@ I made this calculator using pure HTML, CSS and JavaScript.
 ## Illustrations
 <!-- Calculator screenshot here -->
 ![calc-test-gif](https://user-images.githubusercontent.com/57966028/81924936-b4ad8780-95d7-11ea-968e-0e2edd42488b.gif)
+![calc-test](https://user-images.githubusercontent.com/57966028/81929197-80899500-95de-11ea-885d-aca1b4cc63ef.gif)
