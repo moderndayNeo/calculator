@@ -1,4 +1,3 @@
-![Alt text](Shield)
 <img src="./media/shield.svg">
 
 * Live demo: https://moderndayneo.github.io/calculator/ 
