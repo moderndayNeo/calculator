@@ -121,3 +121,44 @@ function calculateFinalValue(array) {
     return +calculatedResult[0]
 }
 ```
+### Tests
+
+```
+describe('tests for isInputValid', () => {
+    test('isInputValid exists', () => {
+        expect(isInputValid).toBeDefined()
+    })
+    test('returns true if last value is a number and value passed is an operator', () => {
+        userInput = ['1']
+        expect(isInputValid('+')).toBe(true)
+    })
+    test('returns true if a number follows a number', () => {
+        userInput = ['1']
+        expect(isInputValid('2')).toBe(true)
+    })
+    test('returns false if last value is an operator and value passed is an operator', () => {
+        userInput = ['*']
+        expect(isInputValid('/')).toBe(false)
+        expect(isInputValid('+')).toBe(false)
+        expect(isInputValid('-')).toBe(false)
+        userInput = ['1', '/', '*']
+        expect(isInputValid('-')).toBe(false)
+        expect(isInputValid('+')).toBe(false)
+        expect(isInputValid('*')).toBe(false)
+    })
+    test('returns false if user enters two decimals', () => {
+        userInput = ['.']
+        expect(isInputValid('.')).toBe(false)
+    })
+    test('returns false if an operator follows a decimal', () => {
+        userInput = ['.']
+        expect(isInputValid('+')).toBe(false)
+    })
+    test('returns false if user enters two decimals as part of a single value', () => {
+        userInput = ['12', '+', '1', '.', '2']
+        expect(isInputValid('.')).toBe(false)
+        userInput = ['1', '.']
+        expect(isInputValid('.')).toBe(false)
+    })
+})
+```
