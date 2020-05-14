@@ -5,9 +5,8 @@
 ![calc-desktop](https://user-images.githubusercontent.com/57966028/81932556-e1679c00-95e3-11ea-84b2-4f9eec2a2cfb.gif)
 
 # Mobile View
-<p align="center">
 ![calc-mobile](https://user-images.githubusercontent.com/57966028/81932134-30f99800-95e3-11ea-8e98-2799f3ac14a1.gif)
-</p>
+
 
 # Table Of Contents
 * [Outline](#outline)
