@@ -166,7 +166,7 @@ describe('tests for isInputValid', () => {
 First <a href="https://github.com/moderndayNeo/calculator/archive/master.zip
 ">Clone This Repo</a>
 
-In the command line type the following:
+Then in the command line type the following:
 
 ```
 $ npm install
