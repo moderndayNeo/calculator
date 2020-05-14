@@ -12,7 +12,8 @@
 # Table Of Contents
 * [Outline](#outline)
 * [Technologies](#technologies)
-* [The Code](#some snippets from the code)
+* [The Code](#some-snippets-from-the-code)
+* [To run the tests](#to-run-the-tests)
 
 ## Outline
 *This project is compatible with mobile, tablet and desktop*
