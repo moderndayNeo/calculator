@@ -69,7 +69,7 @@ const isInputValid = (desiredValue) => {
 ```
 ### Calculation
 
-```
+```js
 function mergeAnyConsecutiveNumbers(arr) {
     let holdingValue = ''
     const arrayWithNumbersConcatenated = []
@@ -91,7 +91,7 @@ function mergeAnyConsecutiveNumbers(arr) {
 }
 ```
 
-```
+```js
 function processMultiplyAndDivide(equation) {
     if (!containsMulOrDiv(equation)) {
         return equation
@@ -112,7 +112,7 @@ function processMultiplyAndDivide(equation) {
 }
 ```
 
-```
+```js
 function calculateFinalValue(array) {
     const equation = mergeAnyConsecutiveNumbers(array)
     const mulsDivsProcessed = processMultiplyAndDivide(equation)
@@ -123,7 +123,7 @@ function calculateFinalValue(array) {
 ```
 ### Tests
 
-```
+```test.js
 describe('tests for isInputValid', () => {
     test('isInputValid exists', () => {
         expect(isInputValid).toBeDefined()
