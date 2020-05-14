@@ -167,9 +167,9 @@ describe('tests for isInputValid', () => {
 In the command line type the following:
 
 ```
-npm install jest
+$ npm install jest
 ```
 
 ```
-npm test
+$ npm test
 ```
