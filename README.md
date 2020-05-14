@@ -27,7 +27,7 @@ I made this calculator using pure HTML, CSS and JavaScript.
 ## Some snippets from the code
 
 ### Input validation
-```
+```js
 const getIndexLastOperator = (arr) => {
     if (arr.some((value) => isOperator(value)) === false) return -1
 
