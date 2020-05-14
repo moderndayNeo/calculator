@@ -162,14 +162,13 @@ describe('tests for isInputValid', () => {
     })
 })
 ```
-## How to run the tests
+## To run the tests
 
 In the command line type the following:
 
 ```
-$ npm install jest
+$ npm install
 ```
-
 ```
 $ npm test
 ```
