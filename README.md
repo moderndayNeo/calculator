@@ -13,7 +13,7 @@
 * [Outline](#outline)
 * [Technologies](#technologies)
 * [The Code](#some-snippets-from-the-code)
-* [To run the tests](#to-run-the-tests)
+* [To Run The Tests](#to-run-the-tests)
 
 ## Outline
 *This project is compatible with mobile, tablet and desktop*
@@ -25,7 +25,7 @@ Note: This calculator was first made using the eval() method. Having learned of 
 ## Technologies
 I made this calculator using pure HTML, CSS and JavaScript.
 
-## Some snippets from the code
+## Some Snippets From The Code
 
 ### Input validation
 ```js
@@ -163,7 +163,7 @@ describe('tests for isInputValid', () => {
     })
 })
 ```
-## To run the tests
+## To Run The Tests
 
 In the command line type the following:
 
