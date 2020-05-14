@@ -13,6 +13,7 @@
 * [Outline](#outline)
 * [Technologies](#technologies)
 * [Illustrations](#illustrations)
+* [The Code](#some snippets from the code)
 
 ## Outline
 *This project is compatible with mobile, tablet and desktop*
