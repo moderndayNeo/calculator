@@ -164,6 +164,8 @@ describe('tests for isInputValid', () => {
 })
 ```
 ## To Run The Tests
+First <a href="https://github.com/moderndayNeo/calculator/archive/master.zip
+">Clone This Repo</a>
 
 In the command line type the following:
 
