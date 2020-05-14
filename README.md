@@ -25,3 +25,45 @@ Note: This calculator was first made using the eval() method. Having learned of 
 I made this calculator using pure HTML, CSS and JavaScript.
 
 ## The Code
+
+### Input validation
+```
+const getIndexLastOperator = (arr) => {
+    if (arr.some((value) => isOperator(value)) === false) return -1
+
+    const lastPlus = arr.lastIndexOf('+')
+    const lastMinus = arr.lastIndexOf('-')
+    const lastMultiply = arr.lastIndexOf('*')
+    const lastDivide = arr.lastIndexOf('/')
+    const indexes = [lastPlus, lastDivide, lastMinus, lastMultiply]
+    const sorted = indexes.sort()
+    const indexLastOperator = sorted[3]
+
+    return indexLastOperator
+}
+
+const isInputValid = (desiredValue) => {
+    const lastValue = getLastValue(userInput)
+
+    if (lastValue === '.') {
+        if (desiredValue === '.') return false
+        if (isOperator(desiredValue)) return false
+    }
+
+    if (desiredValue === '.' && userInput.includes('.')) {
+        const indexLastDecimal = userInput.lastIndexOf('.')
+        const indexLastOperator = getIndexLastOperator(userInput)
+        if (indexLastDecimal > indexLastOperator) return false
+    }
+
+    if (!isOperator(lastValue)) {
+        return true
+    }
+
+    if (isOperator(desiredValue)) {
+        return false
+    }
+
+    return true
+}
+```
