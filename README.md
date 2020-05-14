@@ -1,4 +1,4 @@
-![Shield](./media/shield.svg)
+<!-- ![Shield](./media/shield.svg) -->
 <img src="./media/shield.svg">
 
 * Live demo: https://moderndayneo.github.io/calculator/ 
