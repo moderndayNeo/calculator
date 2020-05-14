@@ -1,6 +1,6 @@
 # Table Of Contents
 * Use the calculator: https://moderndayneo.github.io/calculator/ 
-![calc-test-gif](https://user-images.githubusercontent.com/57966028/81924936-b4ad8780-95d7-11ea-968e-0e2edd42488b.gif)
+![calc-desktop](https://user-images.githubusercontent.com/57966028/81932556-e1679c00-95e3-11ea-84b2-4f9eec2a2cfb.gif)
 
 
 * [Outline](#outline)
