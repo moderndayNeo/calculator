@@ -12,7 +12,6 @@
 # Table Of Contents
 * [Outline](#outline)
 * [Technologies](#technologies)
-* [Illustrations](#illustrations)
 * [The Code](#some snippets from the code)
 
 ## Outline
