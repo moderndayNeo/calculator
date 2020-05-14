@@ -16,4 +16,4 @@ I made this calculator using pure HTML, CSS and JavaScript.
 
 ## Illustrations
 <!-- Calculator screenshot here -->
-
+![calc-test-gif](https://user-images.githubusercontent.com/57966028/81924936-b4ad8780-95d7-11ea-968e-0e2edd42488b.gif)
