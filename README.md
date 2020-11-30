@@ -19,10 +19,10 @@
 
 This calculator works by pushing each button's assigned value to an array. The user's input is first checked as valid. If valid, the equation is calculated and displayed on the screen.
 
-Note: This calculator was first made using the eval() method. Having learned of the security flaws in using eval(), I rebuilt the calculator using number methods and without the use of eval().
+Note: This calculator was first made using the eval() method. Given the security risks in using eval(), I refactored the calculator to perfrom calculations manually and without the use of eval().
 
 ## Technologies
-I made this calculator using pure HTML, CSS and JavaScript.
+Vanilla JavaScript, HTML and CSS.
 
 ## Some Snippets From The Code
 
