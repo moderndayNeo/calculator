@@ -15,15 +15,20 @@
 * [To Run The Tests](#to-run-the-tests)
 
 ## Outline
-*This project is compatible with mobile, tablet and desktop*
+*Compatible with mobile, tablet and desktop*
+
+- Full testing suite using Jest achieving 100% code coverage for core calculation functions
+- Coded the fundamental calculation methods according to BODMAS rules, allowing the user to enjoy all the core operations of a standard calculator
 
 This calculator works by pushing each button's assigned value to an array. The user's input is first checked as valid. If valid, the equation is calculated and displayed on the screen.
 
 Note: This calculator was first made using the eval() method. Given the security risks in using eval(), I refactored the calculator to perfrom calculations manually and without the use of eval().
 
 ## Technologies
-Vanilla JavaScript, HTML and CSS.
-
+- ES6 JavaScript
+- HTML5
+- CSS3
+- Jest 26.0.1
 ## Some Snippets From The Code
 
 ### Input validation
